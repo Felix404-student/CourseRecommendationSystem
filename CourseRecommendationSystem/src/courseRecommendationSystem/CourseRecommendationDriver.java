@@ -6,99 +6,196 @@ import java.util.Scanner;
  * @author justinbrown
  */
 public class CourseRecommendationDriver {
-	
-	public static void main(String[] args) {
-		//Load courses from file
-		
-		//Create User
-		//User user = new User();
-
-		CourseRecommendationDriver cRDriver = new CourseRecommendationDriver();
-		//Menu1: Choose role
-		cRDriver.runMenu1(cRDriver);
-		
-	}
+	private static final String WELCOME_MESSAGE = "Welcome to the Course Recommendation System!\n\nWould you like to log in as a:";
+	private static final String PROMPT = "\nPlease select your choice by number:";
+	private String[] loginMenuOptions = {"Student", "Advisor", "Admin"};
+	private String[] studentLoginOptions = {"I already have a Student Account", "I need to make a Student Account"};
+	private String[] studentMenuOptions = {"Add Course Taken", "Add a Current Course", "Print Courses Taken", "Print Recommended Schedule", "Rate a Professor", "Logout"};
+	private String[] advisorLoginOptions = {"I already have an Advisor Account", "I need to make a Advisor Account"};
+	private String[] advisorMenuOptions = {"Add a Student to your profile", "Check a Student's GPA", "Add a Student's Grade", "Logout"};
+	private static final String ADMIN_PROMPT = "Please enter the Admin password";
+	private static final String PASSWORD = "ADMINISTRATOR";
+	private String[] adminMenuOptions = {"Add Course", "Add Course Offering", "Add Student", "Remove Student", "Add Advisor", "Remove Advisor", "Logout"};
+	private static final String FILE_PROMPT = "Please enter the file name:";
+	private static final String NO_FILE = "Sorry, I couldn't find that file.";
+	private Scanner input;
+	//private User user;
 	
 	public CourseRecommendationDriver() {
-		//blank
+		input = new Scanner(System.in);
+		//user = new User();
 	}
 	
 	/**
-	 * Menu 1: User selects their role to log in or set up a profile (Student, Advisor, or Admin)
-	 * @param cRDriver A Driver object used to run non-static methods and make the menus work
+	 * Manages the menu flow of control
 	 */
-	public void runMenu1(CourseRecommendationDriver cRDriver) {
-		Scanner input = new Scanner(System.in);
+	public void run() {
 		int choice;
-		
-		System.out.println("Welcome to the Course Recommendation System!\n\nWould you like to log in as a:");
-
-		do {
-		System.out.println("(1)\tStudent\n(2)\tAdvisor\n(3)\tAdmin\n\nPlease select your choice by number:");
-		choice = input.nextInt();
-		} while (choice < 1 || choice > 3);
+		System.out.println(WELCOME_MESSAGE);
+		DisplayMenu(loginMenuOptions);
+		choice = GetChoice(loginMenuOptions);
 		
 		switch(choice) {
-		case 1:
-			cRDriver.runMenu2StudentLogin(cRDriver);
+		case(1):
+			StudentLogin();
 			break;
-		case 2:
-			cRDriver.runMenu2Advisor(cRDriver);
+		case(2):
+			AdvisorLogin();
 			break;
-		case 3:
-			cRDriver.runMenu2Admin(cRDriver);
+		case(3):
+			AdminLogin();
 			break;
 		default:
-			System.out.println("Error in menu 1");
+			System.out.println("Error in role selection");
 			break;
+		}
+		
+		//WHERE DO WE GO FROM HERE?
+	}
+	
+	/**
+	 * Prints out a formatted menu for the user to pick an option by number
+	 * @param menu An array of menu options to display
+	 */
+	public void DisplayMenu(String[] menu) {
+		for (int i = 0; i < menu.length; ++i) {
+			System.out.println("(" + (i+1) + ")\t" + menu[i]);
 		}
 	}
 	
 	/**
-	 * Student Login Menu: either finds the file and switches to loadStudentProfile(), or switches to createNewStudentProfile()
-	 * @param cRDriver A Driver object used to run non-static methods and make the menus work
+	 * Prompts the user to pick a menu option and makes sure the User picks one of the menu options available
+	 * @param menu An array of menu options to pick from
+	 * @return An integer representing the User's choice from the menu
 	 */
-	public void runMenu2StudentLogin(CourseRecommendationDriver cRDriver) {
-		Scanner input = new Scanner(System.in);
-		String answer;
-		boolean flag;
-		do {
-			flag = false;
-			System.out.println("Do you have a profile already set up?");
-			answer = input.nextLine();
+	public int GetChoice(String[] menu) {
+		int choice = -1;
+		input = new Scanner(System.in);
+		
+		while (choice < 0 || choice > menu.length) {
+			System.out.println(PROMPT);
+			choice = input.nextInt();
+		}
+		return choice;
+	}
+	
+	public void LoadFile(String filename) {
+		//TO-DO: load file
+		System.out.println("Your file has loaded!\n");
+	}
+	
+	public void StudentLogin() {
+		int choice;
+		DisplayMenu(studentLoginOptions);
+		choice = GetChoice(studentLoginOptions);
+		
+		if (choice == 1) {
+			System.out.println(FILE_PROMPT);
+			input = new Scanner(System.in);
+			String filename = input.nextLine();
+			LoadFile(filename);
 			
-			if (answer.toLowerCase().equals("yes") || answer.toLowerCase().equals("y")) {
-				System.out.println("What is the file name?");
-				answer = input.nextLine();
-				try {
-					loadStudentProfile(answer);
-				} catch(Exception e) {
-					System.out.println("Sorry, I couldn't find that file.");
-					flag = true;
-				}
-			} else if (answer.toLowerCase().equals("no") || answer.toLowerCase().equals("n")) {
-				createNewStudentProfile();
-			} else {
-				System.out.println("Sorry, I didn't understand your answer.\n");
-				flag = true;
+			StudentMenu();
+		} else {
+			NewStudent();
+		}
+	}
+	
+	public void StudentMenu() {
+		int choice;
+		while (true) {
+			DisplayMenu(studentMenuOptions);
+			choice = GetChoice(studentMenuOptions);
+			
+			if (choice == studentMenuOptions.length) {
+				run();
 			}
-		} while (flag);
+		}
 	}
 	
-	public void runMenu2Advisor(CourseRecommendationDriver cRDriver) {
-		System.out.println("Advisor Menu");
+	public void AdvisorLogin() {
+		int choice;
+		DisplayMenu(advisorLoginOptions);
+		choice = GetChoice(advisorLoginOptions);
+		
+		if (choice == 1) {
+			System.out.println(FILE_PROMPT);
+			input = new Scanner(System.in);
+			String filename = input.nextLine();
+			LoadFile(filename);
+			
+			AdvisorMenu();
+		} else {
+			NewAdvisor();
+		}
 	}
 	
-	public void runMenu2Admin(CourseRecommendationDriver cRDriver) {
-		System.out.println("Admin Menu");
+	public void AdvisorMenu() {
+		int choice;
+		while (true) {
+			DisplayMenu(advisorMenuOptions);
+			choice = GetChoice(advisorMenuOptions);
+			
+			if (choice == advisorMenuOptions.length) {
+				run();
+			}
+		}
 	}
 	
-	public void loadStudentProfile(String filename) {
-		System.out.println("Load Student Profile from file");
+	public void AdminLogin() {
+		System.out.println(ADMIN_PROMPT);
+		input = new Scanner(System.in);
+		String password = input.nextLine();
+		if (password.equals(PASSWORD)) {
+			AdminMenu();
+		} else {
+			run();
+		}
 	}
 	
-	public void createNewStudentProfile() {
-		System.out.println("Prompt for Student info, create file");
+	public void AdminMenu() {
+		int choice;
+		while (true) {
+			DisplayMenu(adminMenuOptions);
+			choice = GetChoice(adminMenuOptions);
+			
+			if (choice == adminMenuOptions.length) {
+				run();
+			}
+		}
 	}
-
+	
+	public void NewStudent() {
+		input = new Scanner(System.in);
+		System.out.println("Please enter a Student name");
+		String name = input.nextLine();
+		
+		System.out.println("Please enter a Student ID number");
+		int id = input.nextInt();
+		
+		System.out.println("Please enter a Major (CS, CE, or CIS)");
+		input.nextLine();
+		String major = input.nextLine();
+		
+		//Student newStudent = new Student(name, id, major);
+		System.out.println("Welcome, " + name);
+		StudentMenu();
+	}
+	
+	public void NewAdvisor() {
+		input = new Scanner(System.in);
+		System.out.println("What is your name?");
+		String name = input.nextLine();
+		
+		//Advisor newAdvisor = new Advisor(name);
+		System.out.println("Welcome, " + name);
+		AdvisorMenu();
+	}
+	
+	public static void main(String[] args) {
+		//Load courses from file
+		
+		CourseRecommendationDriver cRDriver = new CourseRecommendationDriver();
+		cRDriver.run();
+	}
 }
