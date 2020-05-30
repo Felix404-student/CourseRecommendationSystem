@@ -72,7 +72,7 @@ public class CourseRecommendationDriver {
 		int choice = -1;
 		input = new Scanner(System.in);
 		
-		while (choice < 0 || choice > menu.length) {
+		while (choice < 1 || choice > menu.length) {
 			System.out.println(PROMPT);
 			choice = input.nextInt();
 		}
@@ -172,10 +172,13 @@ public class CourseRecommendationDriver {
 		
 		System.out.println("Please enter a Student ID number");
 		int id = input.nextInt();
-		
-		System.out.println("Please enter a Major (CS, CE, or CIS)");
 		input.nextLine();
-		String major = input.nextLine();
+		
+		String major = "";
+		while (!(major.equals("CE") || major.equals("CS") || major.equals("CIS"))) {
+			System.out.println("Please enter a Major (CS, CE, or CIS)");
+			major = input.nextLine();
+		}
 		
 		//Student newStudent = new Student(name, id, major);
 		System.out.println("Welcome, " + name);
