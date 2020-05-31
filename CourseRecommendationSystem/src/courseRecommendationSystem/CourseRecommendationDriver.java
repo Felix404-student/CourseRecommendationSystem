@@ -18,6 +18,7 @@ public class CourseRecommendationDriver {
 	private String[] adminMenuOptions = {"Add Course", "Add Course Offering", "Add Student", "Remove Student", "Add Advisor", "Remove Advisor", "Logout"};
 	private static final String FILE_PROMPT = "Please enter the file name:";
 	private static final String NO_FILE = "Sorry, I couldn't find that file.";
+	private String[] semesterOptions = {"Fall", "Spring", "Summer"};
 	private Scanner input;
 	//private User user;
 	
@@ -419,23 +420,98 @@ public class CourseRecommendationDriver {
 	}
 	
 	public void AdminAddCourseOffering() {
+		input = new Scanner(System.in);
+		System.out.println("Enter the Course Code (for example, CSCE247):");
+		String code = input.nextLine();
+		//TO-DO: find course with courseCode code in courses file
 		
+		System.out.println("Which semester would you like to add a Course Offering to?\n");
+		DisplayMenu(semesterOptions);
+		int choice = GetChoice(semesterOptions);
+		
+		switch(choice) {
+		case(1):
+			//course.courseOfferedFall();
+			break;
+		case(2):
+			//course.courseOfferedSpring();
+			break;
+		case(3):
+			//course.courseOfferedSummer();
+			break;
+		default:
+			System.out.println("Error in semester selection");
+			break;
+		}
+		
+		AdminMenu();
 	}
 	
 	public void AdminAddStudent() {
+		input = new Scanner(System.in);
+		System.out.println("Enter a Student name");
+		String name = input.nextLine();
 		
+		System.out.println("Enter a Student ID number");
+		int id = input.nextInt();
+		input.nextLine();
+		
+		String major = "";
+		while (!(major.equals("CE") || major.equals("CS") || major.equals("CIS"))) {
+			System.out.println("Please enter a Major (CS, CE, or CIS)");
+			major = input.nextLine();
+		}
+		
+		//Student newStudent = new Student(name, id, major);
+		//studentfile.addStudent(newStudent);
+		
+		System.out.println("Student added!");
+		AdminMenu();
 	}
 	
 	public void AdminRemoveStudent() {
+		input = new Scanner(System.in);
+		System.out.println("Enter a Student name");
+		String name = input.nextLine();
+		//TO_DO: find student name in students file
+		//studentfile.delete(name);
 		
+		System.out.println("Student removed!");
+		AdminMenu();
 	}
 	
 	public void AdminAddAdvisor() {
+		input = new Scanner(System.in);
+		System.out.println("Enter the Advisor's name:");
+		String name = input.nextLine();
+		//Advisor newAdvisor = new Advisor(name);
 		
+		System.out.println("Would you like to add any advisees to this Advisor?");
+		String response = "";
+		while (response.toLowerCase().equals("yes") || response.toLowerCase().equals("y")) {
+			response = input.nextLine();
+			System.out.println("What is the Student's full name?");
+			response = input.nextLine();
+			//TO_DO: find student in students file
+			//newAdvisor.advisees.add(response);
+			System.out.println("Would you like to add another advisee?");
+			response = input.nextLine();
+		}
+		
+		//advisorfile.addAdvisor(newAdvisor);
+		System.out.println("Advisor added!");
+		AdminMenu();
 	}
 	
 	public void AdminRemoveAdvisor() {
+		input = new Scanner(System.in);
+		System.out.println("Enter an Advisor name");
+		String name = input.nextLine();
+		//TO_DO: find advisor name in advisor file
+		//advisorfile.delete(name);
 		
+		System.out.println("Advisor removed!");
+		AdminMenu();
 	}
 	
 	public static void main(String[] args) {		
