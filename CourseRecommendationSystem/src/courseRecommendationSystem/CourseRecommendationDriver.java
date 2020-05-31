@@ -107,8 +107,28 @@ public class CourseRecommendationDriver {
 			DisplayMenu(studentMenuOptions);
 			choice = GetChoice(studentMenuOptions);
 			
-			if (choice == studentMenuOptions.length) {
+			switch(choice) {
+			case(1):
+				StudentAddCourseTaken();
+				break;
+			case(2):
+				StudentAddCurrentCourse();
+				break;
+			case(3):
+				StudentPrintCoursesTaken();
+				break;
+			case(4):
+				StudentPrintSchedule();
+				break;
+			case(5):
+				StudentRateProfessor();
+				break;
+			case(6):
 				run();
+				break;
+			default:
+				System.out.println("Error in Student Menu");
+				break;
 			}
 		}
 	}
@@ -193,6 +213,52 @@ public class CourseRecommendationDriver {
 		//Advisor newAdvisor = new Advisor(name);
 		System.out.println("Welcome, " + name);
 		AdvisorMenu();
+	}
+	
+	public void StudentAddCourseTaken() {
+		input = new Scanner(System.in);
+		System.out.println("Enter the Course Code (for example, CSCE247):");
+		String code = input.nextLine();
+		
+		//newStudent.addCourseTaken(code);
+		System.out.println("Course Added!");
+	}
+	
+	public void StudentAddCurrentCourse() {
+		input = new Scanner(System.in);
+		System.out.println("Enter the Course Code (for example, CSCE247):");
+		String code = input.nextLine();
+		
+		//newStudent.addCourseCurrent(code);
+		System.out.println("Course Added!");
+	}
+	
+	public void StudentPrintCoursesTaken() {
+		System.out.println("Here's the courses you've taken!:\n");
+		//for (Course : newStudent.CoursesTaken){System.out.println(this.toString())}
+	}
+	
+	public void StudentPrintSchedule() {
+		System.out.println("Here's your recommended schedule:\n");
+		//newStudent.schedule();
+	}
+	
+	public void StudentRateProfessor() {
+		input = new Scanner(System.in);
+		//ArrayList<Professor> professors = new ArrayList<Professor>
+		//TO-DO: load professors from file
+		System.out.println("Here are the professors you've had, please select one by number to rate:");
+		//for (int i = 0; i < professors.size(); ++i) {System.out.println("(" + i+1 + ")\t ArrayList[i].name")};
+		
+		int choice = input.nextInt();
+		int rating = -1;
+		while (rating < 1 || rating > 5) {
+			System.out.println("Please enter a rating (1-5) for "); //professors[choice+1].name);
+			rating = input.nextInt();
+			input.nextLine();
+		}
+		//professors[choice+1].rate(rating);
+		System.out.println("Professor rated");
 	}
 	
 	public static void main(String[] args) {
