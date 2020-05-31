@@ -9,9 +9,9 @@ import java.util.HashMap;
 public class Student extends User{
 	private int studentID = 0; 
 	private Major major = null;
-	private ArrayList<Course> coursesTaken = new ArrayList<Course>();
-	private ArrayList<Course> coursesNow = new ArrayList<Course>();; 
-	private HashMap<String, String> grades = new HashMap<String, String>();
+	protected ArrayList<Course> coursesTaken = new ArrayList<Course>();
+	protected ArrayList<Course> coursesNow = new ArrayList<Course>();; 
+	protected HashMap<String, String> grades = new HashMap<String, String>();
 	private double cumulativeGPA = 0; 
 	
 	/**
