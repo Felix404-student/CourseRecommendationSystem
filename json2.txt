@@ -1,0 +1,652 @@
+[
+  {
+    "name": "Introduction to Computer Concepts",
+    "courseCode": "CSCE 101",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "General Applications Programming",
+    "courseCode": "CSCE 102",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Algorithmic Design I",
+    "courseCode": ",CSCE 145",
+    "courseCredits": "4",
+    "prerequisite": "[MATH 111, MATH 115]",
+    "corequisite": "[MATH 111, MATH 115]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Algorithmic Design II",
+    "courseCode": "CSCE 146",
+    "courseCredits": "4",
+    "prerequisite": "[CSCE 145, and MATH 122, or MATH 141]",
+    "corequisite": "[MATH 122, or MATH 141]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Computing in the Modern World",
+    "courseCode": "CSCE 190",
+    "courseCredits": "1",
+    "prerequisite": "[CSCE 145,CSCE 204,CSCE 205,CSCE 206]",
+    "corequisite": "[CSCE 145,CSCE 204,CSCE 205,CSCE 206]",
+    "FALL": "true",
+    "Spring": "false",
+    "Summer": "false"
+  },
+  {
+    "name": "Introduction to Computer Security",
+    "courseCode": "CSCE 201",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 101,CSCE 102,CSCE 145]",
+    "corequisite": "[CSCE 101,CSCE 102,CSCE 145]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Program Design and Development",
+    "courseCode": "CSCE 204",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 101,MGSC 290,ITEC 264]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Business Application Programming",
+    "courseCode": "CSCE 205",
+    "courseCredits": "3",
+    "prerequisite": "[MSGC 290,CSCE 101]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Scientific Applications Programming",
+    "courseCode": "CSCE 206",
+    "courseCredits": "3",
+    "prerequisite": "[MATH 122,MATH 141]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Unix System Administration",
+    "courseCode": "CSCE 207",
+    "courseCredits": "3",
+    "prerequisite": "[MATH 122,MATH 141]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Special Topics in Computer Programming",
+    "courseCode": "CSCE 209",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "false",
+    "Summer": "false"
+  },
+  {
+    "name": "Computer Hardware Foundations",
+    "courseCode": "CSCE 210",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 145,CSCE 204,CSCE 205,CSCE 206,CSCE 207]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Digital Logic Design",
+    "courseCode": "CSCE 211",
+    "courseCredits": "3",
+    "prerequisite": "[MATH 141]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Introduction to Computer Architecture",
+    "courseCode": "CSCE 212",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 211,CSCE 145,CSCE 206]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "UNIX/Linux Fundamentals",
+    "courseCode": "CSCE 215",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 145]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Advanced Programming Techniques",
+    "courseCode": "CSCE 240",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 215,CSCE 146]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Client-Server Computing",
+    "courseCode": "CSCE 242",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 190,CSCE 146]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Software Engineering",
+    "courseCode": "CSCE 247",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 146]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Robotic Applications and Design",
+    "courseCode": "CSCE 274",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 146]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Operating Systems",
+    "courseCode": "CSCE 311",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240,CSCE 210,CSCE 212]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Embedded Systems",
+    "courseCode": "CSCE 313",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 211,CSCE 212]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Computer Systems Engineering",
+    "courseCode": "CSCE 317",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 212,MATH 242,STAT 509]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Programming Language Structures",
+    "courseCode": "CSCE 330",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240,MATH 174,MATH 374,MATH 574]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Data Structures and Algorithms",
+    "courseCode": "CSCE 350",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240, MATH 174, MATH 374, MATH 574]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Foundations of Computation",
+    "courseCode": "CSCE 355",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 211,CSCE 212,CSCE 350]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Professional Issues in Computer Science and Engineering",
+    "courseCode": "CSCE 390",
+    "courseCredits": "1",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Introduction to Computer Networks",
+    "courseCode": "CSCE 416",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 146]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Capstone Computing Project I",
+    "courseCode": "CSCE 490",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240,ENGL 462, ENGL 463]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Capstone Computing Project II",
+    "courseCode": "CSCE 492",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 490]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Independent Study",
+    "courseCode": "CSCE 498",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Computer Programming and Applications",
+    "courseCode": "CSCE 500",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "System Programming ",
+    "courseCode": "CSCE 510",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 215,CSCE 240]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "System Performance Evaluation ",
+    "courseCode": "CSCE 512",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 311,STAT 509,STAT 511]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Computer Architecture",
+    "courseCode": "CSCE 513",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 211,CSCE 212]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Computer Network Programming",
+    "courseCode": "CSCE 515",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 211,CSCE 212]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Computer Networks",
+    "courseCode": "CSCE 516",
+    "courseCredits": "3",
+    "prerequisite": "[STAT 509,STAT 515]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Computer Crime and Forensics",
+    "courseCode": "CSCE 517",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 215]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Ethical Hacking",
+    "courseCode": "CSCE 518",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 215]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Database System Design",
+    "courseCode": "CSCE 520",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240,GEOG 563]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Information Security Principles",
+    "courseCode": "CSCE 522",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 146,MATH 174,MATH 374]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "true"
+  },
+  {
+    "name": "Service Oriented Computing",
+    "courseCode": "CSCE 526",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 311]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Compiler Construction",
+    "courseCode": "CSCE 531",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Mobile Application Development",
+    "courseCode": "CSCE 546",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Windows Programming",
+    "courseCode": "CSCE 547",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240]]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Building Secure Software",
+    "courseCode": "CSCE 548",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Theory of Computation. {=MATH 562}",
+    "courseCode": "CSCE 551",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 350,MATH 344,MATH 544,MATH 574]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Computer Game Development",
+    "courseCode": "CSCE 552",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240,CSCE 350]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Algorithms in Bioinformatics",
+    "courseCode": "CSCE 555",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 350]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Introduction to Cryptography {=MATH 587}",
+    "courseCode": "CSCE 557",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 145,MATH 241,CSCE 355,MATH 574]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Numerical Analysis. {=MATH 527}",
+    "courseCode": "CSCE 561",
+    "courseCredits": "3",
+    "prerequisite": "[MATH 242,MATH 520]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Systems Simulation",
+    "courseCode": "CSCE 563",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240,STAT 509,STAT 515]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Computational Science",
+    "courseCode": "CSCE 564",
+    "courseCredits": "3",
+    "prerequisite": "[MATH 526,CSCE 146,CSCE 207,CSCE 500]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Introduction to Computer Graphics",
+    "courseCode": "CSCE 565",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240,MATH 526,MATH 544]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Visualization Tools",
+    "courseCode": "CSCE 567",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 145,CSCE 206,CSCE 207]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Parallel Computing",
+    "courseCode": "CSCE 569",
+    "courseCredits": "3",
+    "prerequisite": "[MATH 526,MATH 544]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Critical Interactives",
+    "courseCode": "CSCE 571",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Human-Computer Interaction",
+    "courseCode": "CSCE 572",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Robotics",
+    "courseCode": "CSCE 574",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 211,CSCE 212,CSCE 240]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "false",
+    "Summer": "false"
+  },
+  {
+    "name": "Text Processing",
+    "courseCode": "CSCE 578",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 330,CSCE 355]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Artificial Intelligence",
+    "courseCode": "CSCE 580",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 350]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Bayesian Networks and Decision Graphs",
+    "courseCode": "CSCE 582",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 350,STAT 509,STAT 515]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "false",
+    "Summer": "false"
+  },
+  {
+    "name": "Machine Learning Systems",
+    "courseCode": "CSCE 585",
+    "courseCredits": "3",
+    "prerequisite": "[CSCE 240,CSCE 206]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Big Data Analytics",
+    "courseCode": "CSCE 587",
+    "courseCredits": "3",
+    "prerequisite": "[STAT 509,STAT 513,STAT 515]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Topics in Information Technology",
+    "courseCode": "CSCE 590",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "true",
+    "Spring": "true",
+    "Summer": "false"
+  },
+  {
+    "name": "Strategic Management of Information Systems",
+    "courseCode": "CSCE 594",
+    "courseCredits": "3",
+    "prerequisite": "[NONE]",
+    "corequisite": "[NONE]",
+    "FALL": "false",
+    "Spring": "true",
+    "Summer": "false"
+  }
+]
