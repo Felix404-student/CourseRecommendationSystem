@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
  */
 public class CourseLoader extends CourseConstants{
 	/**
-	 * A method which loads the course attributes from a JSON field
+	 * A method which loads the course attributes from a JSON record
 	 * @return courses, an arrayList
 	 */
 	public static ArrayList<Course> loadCourse() {
