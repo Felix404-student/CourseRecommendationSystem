@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Map; 
 import java.util.HashMap;
 /**
  * Class that creates a Student object that inherits from User 
@@ -77,7 +78,57 @@ public class Student extends User{
 	 * function that updates a student's GPA and changes the value of the cumulativeGPA accordingly 
 	 */
 	public void updateGPA() {
-		// function that updates student GPA
+		double gradePoints = 0; 
+		double totalCredits = 0; 
+		for (Map.Entry<Course, String> entry : grades.entrySet()) {
+			Course course = entry.getKey(); 
+			gradePoints += qualityPoints(entry.getValue())* course.getCredits(); 
+			totalCredits += course.getCredits();
+			// key -> value
+		}
+		this.cumulativeGPA = (gradePoints/totalCredits); 
+	}
+	
+	/**
+	 * function that returns a double value of quality points based on letter grade parameter
+	 * @param grade Letter grade received
+	 * @return double Quality points of grade
+	 */
+	public double qualityPoints(String grade) {
+		double points = 0; 
+		if(grade.equalsIgnoreCase("A"))
+		{
+			points = 4; 
+		}
+		else if(grade.equalsIgnoreCase("B+"))
+		{
+			points = 3.5;
+		}
+		else if(grade.equalsIgnoreCase("B"))
+		{
+			points = 3;
+		}
+		else if(grade.equalsIgnoreCase("C+"))
+		{
+			points = 2.5;
+		}
+		else if(grade.equalsIgnoreCase("C"))
+		{
+			points = 2;
+		}
+		else if(grade.equalsIgnoreCase("D+"))
+		{
+			points = 1.5;
+		}
+		else if(grade.equalsIgnoreCase("D"))
+		{
+			points = 1;
+		}
+		else 
+		{
+			points = 0; 
+		}
+		return points; 
 	}
 	
 	/**
@@ -85,8 +136,6 @@ public class Student extends User{
 	 * @return double GPA of student
 	 */
 	public double getGPA() {
-		// traverse through hashmap and for each mapping, evaluate the grade, and then based on that assign quality points to 
-		// that grade, add them all up and divide by number of credits
 		return this.cumulativeGPA;
 	}
 	
