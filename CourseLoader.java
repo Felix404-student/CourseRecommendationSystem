@@ -4,7 +4,16 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * A class for loading the JSON file for Course
+ * @author Dongyu
+ *
+ */
 public class CourseLoader extends CourseConstants{
+	/**
+	 * A method which loads the course attributes from a JSON field
+	 * @return courses, an arrayList
+	 */
 	public static ArrayList<Course> loadCourse() {
 		ArrayList<Course> courses = new ArrayList<Course>();
 		ArrayList<Course> prerequisites = new ArrayList<Course>();
@@ -33,3 +42,4 @@ public class CourseLoader extends CourseConstants{
 	}
 
 }
+
