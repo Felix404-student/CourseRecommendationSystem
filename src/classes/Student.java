@@ -11,7 +11,7 @@ public class Student extends User{
 	private Major major = null;
 	protected ArrayList<Course> coursesTaken = new ArrayList<Course>();
 	protected ArrayList<Course> coursesNow = new ArrayList<Course>();; 
-	protected HashMap<String, String> grades = new HashMap<String, String>();
+	protected HashMap<Course, String> grades = new HashMap<Course, String>();
 	private double cumulativeGPA = 0; 
 	
 	/**
@@ -49,7 +49,7 @@ public class Student extends User{
 	 * @param course A course a student has taken 
 	 * @param grade The grade a student received in the course
 	 */
-	public void addGrade(String course, String grade) {
+	public void addGrade(Course course, String grade) {
 		grades.put(course, grade); 
 	}
 	
@@ -60,7 +60,7 @@ public class Student extends User{
 	 */
 	public void addCourseTaken(Course course, String grade) {
 		coursesTaken.add(course); 
-		grades.put(course.getName(), grade);
+		grades.put(course, grade);
 	}
 	
 	/**
@@ -76,6 +76,8 @@ public class Student extends User{
 	 * @return double GPA of student
 	 */
 	public double getGPA() {
+		// traverse through hashmap and for each mapping, evaluate the grade, and then based on that assign quality points to 
+		// that grade, add them all up and divide by number of credits
 		return this.cumulativeGPA;
 	}
 	
