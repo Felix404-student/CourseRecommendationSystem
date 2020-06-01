@@ -50,7 +50,8 @@ public class Student extends User{
 	 * @param grade The grade a student received in the course
 	 */
 	public void addGrade(Course course, String grade) {
-		grades.put(course, grade); 
+		grades.put(course, grade);
+		updateGPA(); 
 	}
 	
 	/**
@@ -61,6 +62,7 @@ public class Student extends User{
 	public void addCourseTaken(Course course, String grade) {
 		coursesTaken.add(course); 
 		grades.put(course, grade);
+		updateGPA(); 
 	}
 	
 	/**
@@ -72,6 +74,13 @@ public class Student extends User{
 	}
 	
 	/**
+	 * function that updates a student's GPA and changes the value of the cumulativeGPA accordingly 
+	 */
+	public void updateGPA() {
+		// function that updates student GPA
+	}
+	
+	/**
 	 * function that returns the GPA of a student
 	 * @return double GPA of student
 	 */
@@ -79,6 +88,14 @@ public class Student extends User{
 		// traverse through hashmap and for each mapping, evaluate the grade, and then based on that assign quality points to 
 		// that grade, add them all up and divide by number of credits
 		return this.cumulativeGPA;
+	}
+	
+	/**
+	 * function that returns a student's name 
+	 * @return String Student name 
+	 */
+	public String getName() {
+		return this.name; 
 	}
 	
 	/**

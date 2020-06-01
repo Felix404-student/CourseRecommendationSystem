@@ -60,6 +60,14 @@ public class Course {
 	}
 	
 	/**
+	 * function that removes a prerequisite to the ArrayList of prerequisites for a course
+	 * @param prerequisite
+	 */
+	public void removePrerequisite(Course prerequisite) {
+		prerequisites.remove(prerequisite); 
+	}
+	
+	/**
 	 * function that sets the value of courseSpring to true
 	 */
 	public void courseOfferedSpring() {
