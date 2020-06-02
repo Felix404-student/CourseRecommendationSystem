@@ -29,13 +29,15 @@ public class CourseLoader extends CourseConstants{
 				String name = (String)courseJSON.get(NAME);
 				String code = (String)courseJSON.get(CODE);
 				int credit = (int)courseJSON.get(CREDITS);
-				prerequisites = (ArrayList<Course>) courseJSON.get(PREREQ);
-				corequisites = (ArrayList<Course>) courseJSON.get(COREQ);
+				/*prerequisites = (ArrayList<Course>) courseJSON.get(PREREQ);
+				corequisites = (ArrayList<Course>) courseJSON.get(COREQ);*/
+				String prerequisites_s = (String)courseJSON.get(PREREQ);
+				String corequisites_s = (String) courseJSON.get(COREQ);
 				boolean courseOfferingFall = (boolean)courseJSON.get(COURSEOFFERINGFALL);
 				boolean courseOfferingSpring = (boolean)courseJSON.get(COURSEOFFERINGSPRING);
 				boolean courseOfferingSummer = (boolean)courseJSON.get(COURSEOFFERINGSUMMER);
-				//Doesn't work with Course constructor
 				//courses.add(new Course(name, code, credit,prerequisites,corequisites,courseOfferingFall,courseOfferingSpring,courseOfferingSummer));
+				courses.add(new Course(name, code, credit,prerequisites_s,corequisites_s,courseOfferingFall,courseOfferingSpring,courseOfferingSummer));
 			}
 			return courses;
 		} catch (Exception e) {
