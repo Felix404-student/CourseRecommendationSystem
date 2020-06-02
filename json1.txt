@@ -1,1 +1,0 @@
-[{"name":"Introduction to Computer Concepts","courseCode":"CSCE 101","courseCredits":"3","prerequisite":"[NONE,NONE]","corequisite":"[NONE,NONE]","FALL":"true","Spring":"true","Summer":"true"}]
