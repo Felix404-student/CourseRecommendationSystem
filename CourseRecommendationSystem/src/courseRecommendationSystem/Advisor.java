@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author natmonz
  */
 public class Advisor extends User{
-	private ArrayList<Student> advisees = new ArrayList<Student>(); 
+	protected ArrayList<Student> advisees = new ArrayList<Student>(); 
 	
 	/**
 	 * function that adds a student grade to the student grade Hashmap

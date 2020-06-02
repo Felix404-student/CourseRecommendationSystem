@@ -15,16 +15,16 @@ public class CourseRecommendationDriver {
 	private String[] advisorMenuOptions = {"Add a Student to your profile", "Check a Student's GPA", "Add a Student's Grade", "Logout"};
 	private static final String ADMIN_PROMPT = "Please enter the Admin password";
 	private static final String PASSWORD = "ADMINISTRATOR";
-	private String[] adminMenuOptions = {"Add Course", "Add Course Offering", "Add Student", "Remove Student", "Add Advisor", "Remove Advisor", "Logout"};
+	private String[] adminMenuOptions = {"Add Student", "Remove Student", "Add Advisor", "Remove Advisor", "Logout"};
 	private static final String FILE_PROMPT = "Please enter the file name:";
 	private static final String NO_FILE = "Sorry, I couldn't find that file.";
 	private String[] semesterOptions = {"Fall", "Spring", "Summer"};
 	private Scanner input;
-	//private User user;
+	private User user;
 	
 	public CourseRecommendationDriver() {
 		input = new Scanner(System.in);
-		//user = new User();
+		user = new User();
 		//user.loadCourses();
 	}
 	
@@ -95,9 +95,12 @@ public class CourseRecommendationDriver {
 			System.out.println(FILE_PROMPT);
 			input = new Scanner(System.in);
 			String filename = input.nextLine();
-			//Student student = new Student();
-			//user = student;
 			LoadFile(filename);
+			//TO-DO: load file
+
+			Student student = new Student("", 0, "cs", 0.0);
+			user = student;
+			
 			StudentMenu();
 		} else {
 			NewStudent();
@@ -146,9 +149,12 @@ public class CourseRecommendationDriver {
 			System.out.println(FILE_PROMPT);
 			input = new Scanner(System.in);
 			String filename = input.nextLine();
-			//Advisor advisor = new Advisor();
-			//user = advisor;
 			LoadFile(filename);
+			//TO-DO: load file
+
+			Advisor advisor = new Advisor();
+			user = advisor;
+			
 			AdvisorMenu();
 		} else {
 			NewAdvisor();
@@ -187,7 +193,7 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		String password = input.nextLine();
 		if (password.equals(PASSWORD)) {
-			//Admin admin = new admin();
+			//Admin admin = new Admin();
 			//user = admin;
 			AdminMenu();
 		} else {
@@ -203,24 +209,18 @@ public class CourseRecommendationDriver {
 			
 			switch(choice) {
 			case(1):
-				AdminAddCourse();
-				break;
-			case(2):
-				AdminAddCourseOffering();
-				break;
-			case(3):
 				AdminAddStudent();
 				break;
-			case(4):
+			case(2):
 				AdminRemoveStudent();
 				break;
-			case(5):
+			case(3):
 				AdminAddAdvisor();
 				break;
-			case(6):
+			case(4):
 				AdminRemoveAdvisor();
 				break;
-			case(7):
+			case(5):
 				//user.save();
 				run();
 				break;
@@ -241,13 +241,13 @@ public class CourseRecommendationDriver {
 		input.nextLine();
 		
 		String major = "";
-		while (!(major.equals("CE") || major.equals("CS") || major.equals("CIS"))) {
+		while (!(major.equals("ce") || major.equals("cs") || major.equals("cis"))) {
 			System.out.println("Please enter a Major (CS, CE, or CIS)");
-			major = input.nextLine();
+			major = input.nextLine().toLowerCase();
 		}
 		
-		//Student newStudent = new Student(name, id, major);
-		//user = newStudent;
+		Student newStudent = new Student(name, id, major, 0.0);
+		user = newStudent;
 		System.out.println("Welcome, " + name);
 		StudentMenu();
 	}
@@ -257,8 +257,8 @@ public class CourseRecommendationDriver {
 		System.out.println("What is your name?");
 		String name = input.nextLine();
 		
-		//Advisor newAdvisor = new Advisor(name);
-		//user = newAdvisor;
+		Advisor newAdvisor = new Advisor();
+		user = newAdvisor;
 		System.out.println("Welcome, " + name);
 		AdvisorMenu();
 	}
@@ -267,8 +267,14 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		System.out.println("Enter the Course Code (for example, CSCE247):");
 		String code = input.nextLine();
+		//TO-DO: find course by code in courses
 		
-		//user.addCourseTaken(code);
+		Course course = new Course("", code, 0);
+		
+		System.out.println("Enter your letter grade in that course (A, B+,...):");
+		code = input.nextLine();
+		
+		((Student) user).addCourseTaken(course, code);
 		System.out.println("Course Added!");
 		StudentMenu();
 	}
@@ -277,21 +283,26 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		System.out.println("Enter the Course Code (for example, CSCE247):");
 		String code = input.nextLine();
+		//TO-DO: find course by code in courses
 		
-		//user.addCourseCurrent(code);
+		Course course = new Course("", code, 0);
+		
+		((Student) user).addCourseCurrent(course);
 		System.out.println("Course Added!");
 		StudentMenu();
 	}
 	
 	public void StudentPrintCoursesTaken() {
 		System.out.println("Here's the courses you've taken!:\n");
-		//for (Course : user.CoursesTaken){System.out.println(this.toString())}
+		for (Course course : ((Student) user).coursesTaken) {
+			System.out.println(course.toString());
+		}
 		StudentMenu();
 	}
 	
 	public void StudentPrintSchedule() {
 		System.out.println("Here's your recommended schedule:\n");
-		//user.schedule();
+		//((Student) user).schedule();
 		StudentMenu();
 	}
 	
@@ -318,8 +329,10 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		System.out.println("What is the Student's full name?");
 		String student = input.nextLine();
-		//TO_DO: find student in students file
-		//user.AddStudent(student);
+		//TO-DO: find student in students file
+		//TO-DO: load student from file
+		
+		//((Advisor) user).AddStudent(student);
 		
 		System.out.println("Student Added!");
 		AdvisorMenu();
@@ -328,26 +341,35 @@ public class CourseRecommendationDriver {
 	public void AdvisorGetStudentGPA() {
 		input = new Scanner(System.in);
 		System.out.println("Which Student's GPA would you like to see?:");
-		//for (int i = 0; i < user.advisees.size(); ++i) {System.out.println("(" + i+1 + ")\t user.advisees[i].name")};
+		for (int i = 0; i < ((Advisor) user).advisees.size(); ++i) {
+			System.out.println("(" + i+1 + ")\t" + ((Advisor) user).advisees.get(i).getName());
+		}
 		int choice = input.nextInt();
 		input.nextLine();
-		//user.advisees[choice-1].name + + user.advisees[choice-1].GetGPA()
-		System.out.println("'s GPA is: " + "\n");
+		
+		((Advisor) user).checkGPA(((Advisor) user).advisees.get(choice-1));
+		
 		AdvisorMenu();
 	}
 	
 	public void AdvisorAddStudentGrade() {
 		input = new Scanner(System.in);
-		System.out.println("Which Student's GPA would you like to see?:");
-		//for (int i = 0; i < user.advisees.size(); ++i) {System.out.println("(" + i+1 + ")\t user.advisees[i].name")};
+		System.out.println("Which Student would you like to add a grade for?:");
+		for (int i = 0; i < ((Advisor) user).advisees.size(); ++i) {
+			System.out.println("(" + i+1 + ")\t" + ((Advisor) user).advisees.get(i).getName());
+		}
 		int choice = input.nextInt();
 		input.nextLine();
-		int grade = -1;
-		while (grade < 0 || grade > 110) {
-			System.out.println("Enter the grade (out of 100):");
-			grade = input.nextInt();
-			input.nextLine();
-		}
+		
+		System.out.println("Enter the Course Code (For example, CSCE247)");
+		String code  = input.nextLine();
+		//TO-DO: find course by code in courses
+		Course course = new Course("", code, 3);
+		
+		System.out.println("Enter the student's letter grade (A, B+,...)");
+		String grade = input.nextLine();
+	
+		((Advisor) user).addStudentGrade(((Advisor) user).advisees.get(choice-1), course, grade);
 		System.out.println("Grade Added!");
 		AdvisorMenu();
 	}
@@ -366,24 +388,24 @@ public class CourseRecommendationDriver {
 			credits = input.nextInt();
 			input.nextLine();
 		}
-		//Course course = new Course(name, code, credits);
+		Course course = new Course(name, code, credits);
 		
 		System.out.println("Is this course offered in the Fall?");
 		String response = input.nextLine();
 		if (response.toLowerCase().equals("yes") || response.toLowerCase().equals("y")) {
-			//course.courseOfferedFall();
+			course.courseOfferedFall();
 		}
 		
 		System.out.println("Is this course offered in the Spring?");
 		response = input.nextLine();
 		if (response.toLowerCase().equals("yes") || response.toLowerCase().equals("y")) {
-			//course.courseOfferedSpring();
+			course.courseOfferedSpring();
 		}
 		
 		System.out.println("Is this course offered in the Summer?");
 		response = input.nextLine();
 		if (response.toLowerCase().equals("yes") || response.toLowerCase().equals("y")) {
-			//course.courseOfferedSummer();
+			course.courseOfferedSummer();
 		}
 		
 		response = "";
@@ -424,6 +446,7 @@ public class CourseRecommendationDriver {
 		System.out.println("Enter the Course Code (for example, CSCE247):");
 		String code = input.nextLine();
 		//TO-DO: find course with courseCode code in courses file
+		Course course = new Course ("", code, 0);
 		
 		System.out.println("Which semester would you like to add a Course Offering to?\n");
 		DisplayMenu(semesterOptions);
@@ -431,13 +454,13 @@ public class CourseRecommendationDriver {
 		
 		switch(choice) {
 		case(1):
-			//course.courseOfferedFall();
+			course.courseOfferedFall();
 			break;
 		case(2):
-			//course.courseOfferedSpring();
+			course.courseOfferedSpring();
 			break;
 		case(3):
-			//course.courseOfferedSummer();
+			course.courseOfferedSummer();
 			break;
 		default:
 			System.out.println("Error in semester selection");
@@ -457,12 +480,12 @@ public class CourseRecommendationDriver {
 		input.nextLine();
 		
 		String major = "";
-		while (!(major.equals("CE") || major.equals("CS") || major.equals("CIS"))) {
+		while (!(major.equals("ce") || major.equals("cs") || major.equals("cis"))) {
 			System.out.println("Please enter a Major (CS, CE, or CIS)");
-			major = input.nextLine();
+			major = input.nextLine().toLowerCase();
 		}
 		
-		//Student newStudent = new Student(name, id, major);
+		Student newStudent = new Student(name, id, major, 0.0);
 		//studentfile.addStudent(newStudent);
 		
 		System.out.println("Student added!");
@@ -484,7 +507,7 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		System.out.println("Enter the Advisor's name:");
 		String name = input.nextLine();
-		//Advisor newAdvisor = new Advisor(name);
+		Advisor newAdvisor = new Advisor();
 		
 		System.out.println("Would you like to add any advisees to this Advisor?");
 		String response = "";
@@ -492,8 +515,10 @@ public class CourseRecommendationDriver {
 			response = input.nextLine();
 			System.out.println("What is the Student's full name?");
 			response = input.nextLine();
+			Student student = new Student (response, 0, "", 0.0);
+			
 			//TO_DO: find student in students file
-			//newAdvisor.advisees.add(response);
+			newAdvisor.advisees.add(student);
 			System.out.println("Would you like to add another advisee?");
 			response = input.nextLine();
 		}
