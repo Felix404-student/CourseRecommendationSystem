@@ -14,6 +14,8 @@ public class Course {
 	private boolean courseSpring = false; 
 	private boolean courseSummer = false; 
 	private boolean courseFall = false; 
+	private String prerequisites_s = "null";
+	private String corequisites_s = "null";
 	
 	/**
 	 * function that creates a course based on parameters of specific name, course code, and credit 
@@ -25,6 +27,51 @@ public class Course {
 		this.name = name; 
 		this.code = code; 
 		this.credits = credits; 
+	}
+	
+	/**
+	 * function that creates a course based on parameters of specific name, course code, and credit 
+	 * @param name Name of a course
+	 * @param code Course code for a  course
+	 * @param credits Amount of credits a course is worth
+	 * @param corequisites2 arraylist
+	 * @param prerequisites2 arraylist
+	 * @param courseOfferingSummer 
+	 * @param courseOfferingSpring 
+	 * @param courseOfferingFall 
+	 */
+	Course(String name, String code, int credits, ArrayList<Course> prerequisites2, ArrayList<Course> corequisites2, boolean courseOfferingFall, boolean courseOfferingSpring, boolean courseOfferingSummer) {
+		this.name = name; 
+		this.code = code; 
+		this.credits = credits; 
+		this.prerequisites = prerequisites;
+		this.corequisites = corequisites;
+		this.courseSpring = courseSpring;
+		this.courseSummer = courseSummer;
+		this.courseFall = courseFall;
+	}
+
+	/**
+	 * 2nd constructor
+	 * function that creates a course based on parameters of specific name, course code, and credit 
+	 * @param name Name of a course
+	 * @param code Course code for a  course
+	 * @param credits Amount of credits a course is worth
+	 * @param corequisites2 string
+	 * @param prerequisites2 
+	 * @param courseOfferingSummer 
+	 * @param courseOfferingSpring 
+	 * @param courseOfferingFall 
+	 */
+	Course(String name, String code, int credits, String prerequisites_s, String corequisites_s, boolean courseOfferingFall, boolean courseOfferingSpring, boolean courseOfferingSummer) {
+		this.name = name; 
+		this.code = code; 
+		this.credits = credits; 
+		this.prerequisites_s = prerequisites_s;
+		this.corequisites_s = corequisites_s;
+		this.courseSpring = courseOfferingFall;
+		this.courseSummer = courseOfferingSummer;
+		this.courseFall = courseOfferingFall;
 	}
 	
 	/**
