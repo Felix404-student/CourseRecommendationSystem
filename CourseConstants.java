@@ -4,7 +4,7 @@
  *
  */
 public abstract class CourseConstants {
-	public static final String FILE_NAME = "src/json/json2.json";
+	public static final String FILE_NAME = "src/json2.json";
 	public static final String NAME = "name";
 	public static final String CODE = "courseCode";
 	public static final String CREDITS = "courseCredits";
