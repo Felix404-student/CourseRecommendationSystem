@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
  * Class that creates a Course object 
 
- * @author natmonz
+ * @author natmonz, dongyu chen
 
  */
 public class Course {
@@ -15,7 +15,8 @@ public class Course {
 		private boolean courseSpring = false; 
 		private boolean courseSummer = false; 
 		private boolean courseFall = false; 
-
+		private String prerequisites_s = "null";
+		private String corequisites_s = "null";
 		
 
 		/**
@@ -27,8 +28,8 @@ public class Course {
 		 * @param code Course code for a  course
 
 		 * @param credits Amount of credits a course is worth
-		 * @param corequisites2 
-		 * @param prerequisites2 
+		 * @param corequisites2 arraylist
+		 * @param prerequisites2 arraylist
 		 * @param courseOfferingSummer 
 		 * @param courseOfferingSpring 
 		 * @param courseOfferingFall 
@@ -46,6 +47,34 @@ public class Course {
 			this.courseFall = courseFall;
 		}
 
+		/**
+		 * 2nd constructor
+
+		 * function that creates a course based on parameters of specific name, course code, and credit 
+
+		 * @param name Name of a course
+
+		 * @param code Course code for a  course
+
+		 * @param credits Amount of credits a course is worth
+		 * @param corequisites2 string
+		 * @param prerequisites2 
+		 * @param courseOfferingSummer 
+		 * @param courseOfferingSpring 
+		 * @param courseOfferingFall 
+
+		 */
+
+		Course(String name, String code, int credits, String prerequisites_s, String corequisites_s, boolean courseOfferingFall, boolean courseOfferingSpring, boolean courseOfferingSummer) {
+			this.name = name; 
+			this.code = code; 
+			this.credits = credits; 
+			this.prerequisites_s = prerequisites_s;
+			this.corequisites_s = corequisites_s;
+			this.courseSpring = courseOfferingFall;
+			this.courseSummer = courseOfferingSummer;
+			this.courseFall = courseOfferingFall;
+		}
 		
 
 		/**
@@ -158,7 +187,7 @@ public class Course {
 		 */
 
 		public String toString() {
-			return "Course: " + name + " Code: " + " Credits: " + credits; 
+			return "Course: " + name + " Code: " + code+ " Credits: " + credits + " Prerequisites: "+ prerequisites_s + " Corequisites: "+ corequisites_s + " Fall? "+ String.valueOf(courseFall) + " Spring? "+ String.valueOf(courseSpring) + " Summer? "+ String.valueOf(courseSummer) ; 
 		}
 
 }
