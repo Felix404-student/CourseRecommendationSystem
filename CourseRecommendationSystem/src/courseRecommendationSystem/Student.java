@@ -8,26 +8,25 @@ import java.util.HashMap;
  * @author natmonz
  */
 public class Student extends User{
-	private int studentID = 0; 
-	private Major major = null;
+	private int studentID; 
+	private Major major;
 	protected ArrayList<Course> coursesTaken = new ArrayList<Course>();
-	protected ArrayList<Course> coursesNow = new ArrayList<Course>();; 
+	protected ArrayList<Course> coursesNow = new ArrayList<Course>(); 
 	protected HashMap<Course, String> grades = new HashMap<Course, String>();
-	private double cumulativeGPA = 0; 
+	private double cumulativeGPA; 
 	
 	/**
 	 * function that creates a student object with values from the parameters
 	 * @param name String name of Student
 	 * @param studentID Integer student's ID
 	 * @param major String of student's major
-	 * @param cumulativeGPA Double of Student's overall GPA
 	 */
-	Student(String name, int studentID, String major, double cumulativeGPA) {
+	Student(String name, int studentID, String major) {
 		this.name = name; 
 		this.classification = "Student"; 
 		this.studentID = studentID; 
 		setMajor(major); 
-		this.cumulativeGPA = cumulativeGPA; 
+		this.cumulativeGPA = 0.0; 
 	}
 	
 	/**
@@ -35,9 +34,9 @@ public class Student extends User{
 	 * @param major String that is a Student's major
 	 */
 	public void setMajor(String major) {
-		if(major != "cs" && major != "ce" && major != "cis") {
-			System.out.println("The system only works for computer science, computer engineering, "
-								+ "and computer information system majors. The major will default to cs");
+		if(!(major.equals("cs")) && !(major.equals("ce")) && !(major.equals("cis"))) {
+			//System.out.println("The system only works for computer science, computer engineering, "
+								//+ "and computer information system majors. The major will default to cs");
 			this.major = new Major("cs"); 
 		}
 		else { 

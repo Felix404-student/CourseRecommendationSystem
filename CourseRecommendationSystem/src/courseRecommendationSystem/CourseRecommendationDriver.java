@@ -81,11 +81,19 @@ public class CourseRecommendationDriver {
 		return choice;
 	}
 	
+	/**
+	 * This is on incomplete method to retrieve data from a data structure in another class
+	 * @param filename A search parameter to locate the correct object
+	 */
 	public void LoadFile(String filename) {
 		//TO-DO: load file
 		System.out.println("Your file has loaded!\n");
 	}
 	
+	/*
+	 * Prompts the user for the name of their Student text file in the class path
+	 * Tries to load the Student information from file. If not, displays NO_FILE message
+	 */
 	public void StudentLogin() {
 		int choice;
 		DisplayMenu(studentLoginOptions);
@@ -98,7 +106,7 @@ public class CourseRecommendationDriver {
 			LoadFile(filename);
 			//TO-DO: load file
 
-			Student student = new Student("", 0, "cs", 0.0);
+			Student student = new Student("TEST STUDENT 3", 9999, "cs");
 			user = student;
 			
 			StudentMenu();
@@ -107,6 +115,9 @@ public class CourseRecommendationDriver {
 		}
 	}
 	
+	/**
+	 * Once user is confirmed as a Student, manages flow of control for possible Student options
+	 */
 	public void StudentMenu() {
 		int choice;
 		while (true) {
@@ -140,6 +151,10 @@ public class CourseRecommendationDriver {
 		}
 	}
 	
+	/**
+	 * Prompts the user for the name of their Advisor text file in the class path
+	 * Tries to load the Advisor information from file. If not, displays NO_FILE message
+	 */
 	public void AdvisorLogin() {
 		int choice;
 		DisplayMenu(advisorLoginOptions);
@@ -152,7 +167,7 @@ public class CourseRecommendationDriver {
 			LoadFile(filename);
 			//TO-DO: load file
 
-			Advisor advisor = new Advisor();
+			Advisor advisor = new Advisor("");
 			user = advisor;
 			
 			AdvisorMenu();
@@ -161,6 +176,9 @@ public class CourseRecommendationDriver {
 		}
 	}
 	
+	/**
+	 * Once user is confirmed as an Advisor, manages flow of control for possible Student options
+	 */
 	public void AdvisorMenu() {
 		int choice;
 		while (true) {
@@ -188,6 +206,11 @@ public class CourseRecommendationDriver {
 		}
 	}
 	
+	/**
+	 * Prompts the user for the Admin password
+	 * If correct, user is now an Admin, go to Admin Menu
+	 * If incorrect, go to login menu
+	 */
 	public void AdminLogin() {
 		System.out.println(ADMIN_PROMPT);
 		input = new Scanner(System.in);
@@ -197,10 +220,14 @@ public class CourseRecommendationDriver {
 			//user = admin;
 			AdminMenu();
 		} else {
+			System.out.println("Sorry, that was not correct.\n");
 			run();
 		}
 	}
 	
+	/**
+	 * Once user is confirmed as an Admin, manages flow of control for possible Student options
+	 */
 	public void AdminMenu() {
 		int choice;
 		while (true) {
@@ -231,6 +258,10 @@ public class CourseRecommendationDriver {
 		}
 	}
 	
+	/**
+	 * Prompts user for data entry to create a new Student object, sets user to a Student
+	 * Go to Student Menu
+	 */
 	public void NewStudent() {
 		input = new Scanner(System.in);
 		System.out.println("Please enter a Student name");
@@ -246,30 +277,39 @@ public class CourseRecommendationDriver {
 			major = input.nextLine().toLowerCase();
 		}
 		
-		Student newStudent = new Student(name, id, major, 0.0);
+		Student newStudent = new Student(name, id, major);
 		user = newStudent;
 		System.out.println("Welcome, " + name);
 		StudentMenu();
 	}
 	
+	/**
+	 * Prompts user for a name, creates new Advisor object, sets user to an Advisor
+	 * Go to Advisor Menu
+	 */
 	public void NewAdvisor() {
 		input = new Scanner(System.in);
 		System.out.println("What is your name?");
 		String name = input.nextLine();
 		
-		Advisor newAdvisor = new Advisor();
+		Advisor newAdvisor = new Advisor(name);
 		user = newAdvisor;
 		System.out.println("Welcome, " + name);
 		AdvisorMenu();
 	}
 	
+	/**
+	 * Incomplete function to link to Student.addCourseTaken()
+	 * Needs to be able to locate correct course object
+	 * Returns flow of control to Student Menu
+	 */
 	public void StudentAddCourseTaken() {
 		input = new Scanner(System.in);
 		System.out.println("Enter the Course Code (for example, CSCE247):");
 		String code = input.nextLine();
 		//TO-DO: find course by code in courses
 		
-		Course course = new Course("", code, 0);
+		Course course = new Course("TEST COURSE 1", code, 999);
 		
 		System.out.println("Enter your letter grade in that course (A, B+,...):");
 		code = input.nextLine();
@@ -279,19 +319,28 @@ public class CourseRecommendationDriver {
 		StudentMenu();
 	}
 	
+	/**
+	 * Incomplete function to link to Student.addCourseCurrent()
+	 * Needs to be able to locate correct course object
+	 * Returns flow of control to Student Menu
+	 */
 	public void StudentAddCurrentCourse() {
 		input = new Scanner(System.in);
 		System.out.println("Enter the Course Code (for example, CSCE247):");
 		String code = input.nextLine();
 		//TO-DO: find course by code in courses
 		
-		Course course = new Course("", code, 0);
+		Course course = new Course("TEST COURSE 2", code, 999);
 		
 		((Student) user).addCourseCurrent(course);
 		System.out.println("Course Added!");
 		StudentMenu();
 	}
 	
+	/**
+	 * Displays all Courses in Student's CoursesTaken ArrayList
+	 * Returns flow of control to Student Menu
+	 */
 	public void StudentPrintCoursesTaken() {
 		System.out.println("Here's the courses you've taken!:\n");
 		for (Course course : ((Student) user).coursesTaken) {
@@ -300,12 +349,34 @@ public class CourseRecommendationDriver {
 		StudentMenu();
 	}
 	
+	/**
+	 * Displays all Courses in Student's CoursesNow ArrayList
+	 * Returns flow of control to Student Menu
+	 */
+	public void StudentPrintCoursesCurrent() {
+		System.out.println("Here's the courses you've taken!:\n");
+		for (Course course : ((Student) user).coursesNow) {
+			System.out.println(course.toString());
+		}
+		StudentMenu();
+	}
+	
+	/**
+	 * Incomplete function to display calculated schedule
+	 * Needs... someone to write that function
+	 * Returns flow of control to Student Menu
+	 */
 	public void StudentPrintSchedule() {
 		System.out.println("Here's your recommended schedule:\n");
 		//((Student) user).schedule();
 		StudentMenu();
 	}
 	
+	/**
+	 * Incomplete function to display all professors, allow Student to Rate one
+	 * Needs... Professor to exist as a class
+	 * Returns flow of control to Student Menu
+	 */
 	public void StudentRateProfessor() {
 		input = new Scanner(System.in);
 		//ArrayList<Professor> professors = new ArrayList<Professor>
@@ -325,6 +396,11 @@ public class CourseRecommendationDriver {
 		StudentMenu();
 	}
 	
+	/**
+	 * Incomplete function to add a Student to an Advisors ArrayList of Advisees
+	 * Needs ability to find correct Student object
+	 * Returns flow of control to Advisor Menu
+	 */
 	public void AdvisorAddStudent() {
 		input = new Scanner(System.in);
 		System.out.println("What is the Student's full name?");
@@ -332,12 +408,18 @@ public class CourseRecommendationDriver {
 		//TO-DO: find student in students file
 		//TO-DO: load student from file
 		
-		//((Advisor) user).AddStudent(student);
+		Student newStudent = new Student(student, 9999, "cs");
+		((Advisor) user).addStudent(newStudent);
 		
 		System.out.println("Student Added!");
 		AdvisorMenu();
 	}
 	
+	/**
+	 * Displays Advisor's Students in advisees ArrayList
+	 * Displays chosen Student's GPA
+	 * Returns flow of control to Advisor Menu
+	 */
 	public void AdvisorGetStudentGPA() {
 		input = new Scanner(System.in);
 		System.out.println("Which Student's GPA would you like to see?:");
@@ -352,6 +434,10 @@ public class CourseRecommendationDriver {
 		AdvisorMenu();
 	}
 	
+	/**
+	 * Allows Advisor to add a grade for a course to a Student's file
+	 * Returns flow of control to Advisor Menu
+	 */
 	public void AdvisorAddStudentGrade() {
 		input = new Scanner(System.in);
 		System.out.println("Which Student would you like to add a grade for?:");
@@ -364,7 +450,7 @@ public class CourseRecommendationDriver {
 		System.out.println("Enter the Course Code (For example, CSCE247)");
 		String code  = input.nextLine();
 		//TO-DO: find course by code in courses
-		Course course = new Course("", code, 3);
+		Course course = new Course("TEST COURSE 1", code, 999);
 		
 		System.out.println("Enter the student's letter grade (A, B+,...)");
 		String grade = input.nextLine();
@@ -374,6 +460,10 @@ public class CourseRecommendationDriver {
 		AdvisorMenu();
 	}
 	
+	/**
+	 * Unused function to add a course through console input instead of manually in file
+	 * Returns flow of control to Admin Menu
+	 */
 	public void AdminAddCourse() {
 		input = new Scanner(System.in);
 		System.out.println("Enter the Course Code (for example, CSCE247):");
@@ -441,6 +531,10 @@ public class CourseRecommendationDriver {
 		AdminMenu();
 	}
 	
+	/**
+	 * Unused function to add a Course Offering (class deleted)
+	 * Returns flow of control to Advisor Menu
+	 */
 	public void AdminAddCourseOffering() {
 		input = new Scanner(System.in);
 		System.out.println("Enter the Course Code (for example, CSCE247):");
@@ -470,6 +564,11 @@ public class CourseRecommendationDriver {
 		AdminMenu();
 	}
 	
+	/**
+	 * Incomplete function allows Admin to create a new Student object
+	 * Needs... Admin class to exist
+	 * Returns flow of control to Advisor Menu
+	 */
 	public void AdminAddStudent() {
 		input = new Scanner(System.in);
 		System.out.println("Enter a Student name");
@@ -485,13 +584,18 @@ public class CourseRecommendationDriver {
 			major = input.nextLine().toLowerCase();
 		}
 		
-		Student newStudent = new Student(name, id, major, 0.0);
+		Student newStudent = new Student(name, id, major);
 		//studentfile.addStudent(newStudent);
 		
 		System.out.println("Student added!");
 		AdminMenu();
 	}
 	
+	/**
+	 * Incomplete function allows Admin to delete a Student object
+	 * Needs... Admin class to exist
+	 * Returns flow of control to Advisor Menu
+	 */
 	public void AdminRemoveStudent() {
 		input = new Scanner(System.in);
 		System.out.println("Enter a Student name");
@@ -503,11 +607,16 @@ public class CourseRecommendationDriver {
 		AdminMenu();
 	}
 	
+	/**
+	 * Incomplete function allows Admin to create a new Advisor object
+	 * Needs... Admin class to exist
+	 * Returns flow of control to Advisor Menu
+	 */
 	public void AdminAddAdvisor() {
 		input = new Scanner(System.in);
 		System.out.println("Enter the Advisor's name:");
 		String name = input.nextLine();
-		Advisor newAdvisor = new Advisor();
+		Advisor newAdvisor = new Advisor(name);
 		
 		System.out.println("Would you like to add any advisees to this Advisor?");
 		String response = "";
@@ -515,7 +624,7 @@ public class CourseRecommendationDriver {
 			response = input.nextLine();
 			System.out.println("What is the Student's full name?");
 			response = input.nextLine();
-			Student student = new Student (response, 0, "", 0.0);
+			Student student = new Student (response, 9999, "cs");
 			
 			//TO_DO: find student in students file
 			newAdvisor.advisees.add(student);
@@ -528,6 +637,11 @@ public class CourseRecommendationDriver {
 		AdminMenu();
 	}
 	
+	/**
+	 * Incomplete function allows Admin to delete a Advisor object
+	 * Needs... Admin class to exist
+	 * Returns flow of control to Advisor Menu
+	 */
 	public void AdminRemoveAdvisor() {
 		input = new Scanner(System.in);
 		System.out.println("Enter an Advisor name");
