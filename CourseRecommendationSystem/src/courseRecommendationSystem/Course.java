@@ -6,9 +6,9 @@ import java.util.ArrayList;
  * @author natmonz
  */
 public class Course {
-	private String name = null; 
-	private String code = null; 
-	private int credits = 0; 
+	private String name; 
+	private String code; 
+	private int credits; 
 	private ArrayList<Course> prerequisites = new ArrayList<Course>();
 	private ArrayList<Course> corequisites = new ArrayList<Course>();
 	private boolean courseSpring = false; 
@@ -196,6 +196,6 @@ public class Course {
 	 * @return String 
 	 */
 	public String toString() {
-		return "Course: " + name + " Code: " + " Credits: " + credits; 
+		return "Course: " + name + "\tCode: " + code + "\tCredits: " + credits; 
 	}
 }

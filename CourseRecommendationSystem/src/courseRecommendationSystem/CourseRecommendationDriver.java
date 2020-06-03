@@ -315,7 +315,7 @@ public class CourseRecommendationDriver {
 		code = input.nextLine();
 		
 		((Student) user).addCourseTaken(course, code);
-		System.out.println("Course Added!");
+		System.out.println("Course Added!\n");
 		StudentMenu();
 	}
 	
@@ -333,7 +333,7 @@ public class CourseRecommendationDriver {
 		Course course = new Course("TEST COURSE 2", code, 999);
 		
 		((Student) user).addCourseCurrent(course);
-		System.out.println("Course Added!");
+		System.out.println("Course Added!\n");
 		StudentMenu();
 	}
 	
