@@ -14,7 +14,7 @@ public class Courses {
 	 * Private constructor to load all courses from file
 	 */
 	private Courses() {
-		courseList = CourseLoader.loadCourse();
+		courseList = CourseLoader.loadCourses();
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class Courses {
 	/**
 	 * If Course exists, return the instance of the Course
 	 * @param courseCode String to search courseList for
-	 * @return The Course from
+	 * @return The Course object from ArrayList courseList
 	 */
 	public Course getCourse(String courseCode) {
 		if (!haveCourse(courseCode)) {

@@ -26,6 +26,8 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		user = new User();
 		Courses.getCourses();
+		Students.getStudents();
+		Advisors.getAdvisors();
 	}
 	
 	/**
@@ -81,15 +83,6 @@ public class CourseRecommendationDriver {
 		return choice;
 	}
 	
-	/**
-	 * This is on incomplete method to retrieve data from a data structure in another class
-	 * @param filename A search parameter to locate the correct object
-	 */
-	public void LoadFile(String filename) {
-		//TO-DO: load file
-		System.out.println("Your file has loaded!\n");
-	}
-	
 	/*
 	 * Prompts the user for the name of their Student text file in the class path
 	 * Tries to load the Student information from file. If not, displays NO_FILE message
@@ -100,16 +93,16 @@ public class CourseRecommendationDriver {
 		choice = GetChoice(studentLoginOptions);
 		
 		if (choice == 1) {
-			System.out.println(FILE_PROMPT);
+			System.out.println("What is your full name, according to your profile?");
 			input = new Scanner(System.in);
-			String filename = input.nextLine();
-			LoadFile(filename);
-			//TO-DO: load file
-
-			Student student = new Student("TEST STUDENT 3", 9999, "cs");
-			user = student;
-			
-			StudentMenu();
+			String name = input.nextLine();
+			/*if (Students.haveStudent(name)) {
+				user = Students.getStudent(name);
+				StudentMenu();
+			} else {
+				System.out.println("Sorry, we could not find a student by that name.");
+				run();
+			}*/
 		} else {
 			NewStudent();
 		}
@@ -161,16 +154,16 @@ public class CourseRecommendationDriver {
 		choice = GetChoice(advisorLoginOptions);
 		
 		if (choice == 1) {
-			System.out.println(FILE_PROMPT);
+			System.out.println("What is your full name, according to your profile?");
 			input = new Scanner(System.in);
-			String filename = input.nextLine();
-			LoadFile(filename);
-			//TO-DO: load file
-
-			Advisor advisor = new Advisor("");
-			user = advisor;
-			
-			AdvisorMenu();
+			String name = input.nextLine();
+			/*if (Advisors.haveAdvisor(name)) {
+				user = Advisors.getAdvisor(name);
+				AdvisorMenu();
+			} else {
+				System.out.println("Sorry, we could not find an Advisor by that name.");
+				run();
+			}*/
 		} else {
 			NewAdvisor();
 		}
