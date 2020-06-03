@@ -34,7 +34,12 @@ public class Advisors {
 	 * @return Whether or not the system can find that Advisor
 	 */
 	public boolean haveAdvisor(String name) {
-		return true;
+		for(int i = 0; i < advisorList.size();i++) {
+			if(name.equals(advisorList.get(i).getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
@@ -45,6 +50,12 @@ public class Advisors {
 	public Advisor getAdvisor(String name) {
 		if (!haveAdvisor(name)) {
 			return null;
+		}else {
+			for(int i = 0; i < advisorList.size();i++) {
+				if(name.equals(advisorList.get(i).getName())){
+					return advisorList.get(i);
+				}
+			}
 		}
 		return null;
 	}
