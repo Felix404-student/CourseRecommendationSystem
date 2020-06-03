@@ -94,39 +94,16 @@ public class Student extends User{
 	 * @return double Quality points of grade
 	 */
 	public double qualityPoints(String grade) {
-		double points = 0; 
-		if(grade.equalsIgnoreCase("A"))
-		{
-			points = 4; 
-		}
-		else if(grade.equalsIgnoreCase("B+"))
-		{
-			points = 3.5;
-		}
-		else if(grade.equalsIgnoreCase("B"))
-		{
-			points = 3;
-		}
-		else if(grade.equalsIgnoreCase("C+"))
-		{
-			points = 2.5;
-		}
-		else if(grade.equalsIgnoreCase("C"))
-		{
-			points = 2;
-		}
-		else if(grade.equalsIgnoreCase("D+"))
-		{
-			points = 1.5;
-		}
-		else if(grade.equalsIgnoreCase("D"))
-		{
-			points = 1;
-		}
-		else 
-		{
-			points = 0; 
-		}
+		HashMap<String, Double> letterGrades = new HashMap<String, Double>(); 
+		letterGrades.put("A", 4.0);
+		letterGrades.put("B+", 3.5);
+		letterGrades.put("B", 3.0);
+		letterGrades.put("C+", 2.5);
+		letterGrades.put("C", 2.0);
+		letterGrades.put("D+", 1.5);
+		letterGrades.put("D", 1.0);
+		letterGrades.put("F", 0.0);
+		Double points = letterGrades.get(grade); 
 		return points; 
 	}
 	

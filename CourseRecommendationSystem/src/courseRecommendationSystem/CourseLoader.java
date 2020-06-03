@@ -29,6 +29,7 @@ public class CourseLoader extends CourseConstants{
 				String name = (String)courseJSON.get(NAME);
 				String code = (String)courseJSON.get(CODE);
 				int credit = Integer.parseInt((String)courseJSON.get(CREDITS));
+
 				/*prerequisites = (ArrayList<Course>) courseJSON.get(PREREQ);
 				corequisites = (ArrayList<Course>) courseJSON.get(COREQ);*/
 				String prerequisites_s = (String)courseJSON.get(PREREQ);
