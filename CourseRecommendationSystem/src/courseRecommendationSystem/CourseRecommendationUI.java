@@ -10,4 +10,8 @@ public class CourseRecommendationUI {
 	public CourseRecommendationUI() {
 		
 	}
+	
+	public void testMethod() {
+		System.out.println("test test test");
+	}
 }
