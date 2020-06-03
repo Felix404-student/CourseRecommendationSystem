@@ -117,6 +117,7 @@ public class Student extends User{
 	
 	/**
 	 * function that returns a student's name 
+	 * used to search for Student in ArrayList of Students
 	 * @return String Student name 
 	 */
 	public String getName() {

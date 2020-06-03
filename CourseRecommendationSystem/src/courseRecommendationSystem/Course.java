@@ -9,8 +9,8 @@ public class Course {
 	private String name; 
 	private String code; 
 	private int credits; 
-	private ArrayList<Course> prerequisites = new ArrayList<Course>();
-	private ArrayList<Course> corequisites = new ArrayList<Course>();
+	protected ArrayList<Course> prerequisites = new ArrayList<Course>();
+	protected ArrayList<Course> corequisites = new ArrayList<Course>();
 	private boolean courseSpring = false; 
 	private boolean courseSummer = false; 
 	private boolean courseFall = false; 
@@ -136,6 +136,15 @@ public class Course {
 	 */
 	public String getName() {
 		return this.name; 
+	}
+	
+	/**
+	 * function that returns the Course Code of the course
+	 * Used for searching through courses
+	 * @return Course Code for the course
+	 */
+	public String getCode() {
+		return this.code;
 	}
 	
 	/**

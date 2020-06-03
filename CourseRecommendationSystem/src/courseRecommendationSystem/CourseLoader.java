@@ -16,7 +16,7 @@ public class CourseLoader extends CourseConstants{
 	 * A method which loads the course attributes from a JSON record
 	 * @return courses, an arrayList
 	 */
-	public static ArrayList<Course> loadCourse() {
+	public static ArrayList<Course> loadCourses() {
 		ArrayList<Course> courses = new ArrayList<Course>();
 		/*ArrayList<Course> prerequisites = new ArrayList<Course>();
 		ArrayList<Course> corequisites = new ArrayList<Course>();*/
@@ -44,6 +44,18 @@ public class CourseLoader extends CourseConstants{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+	
+	public static ArrayList<Student> loadStudents() {
+		//load students from file
+		
+		return null;
+	}
+	
+	public static ArrayList<Advisor> loadAdvisors() {
+		//load advisors from file
+		
 		return null;
 	}
 
