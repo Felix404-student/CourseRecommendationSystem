@@ -177,8 +177,6 @@ public class Course {
 			this.courseFall= true; 
 		}
 
-		
-
 		/**
 
 		 * function that returns a string representation of the course information 
