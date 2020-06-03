@@ -25,7 +25,7 @@ public class CourseRecommendationDriver {
 	public CourseRecommendationDriver() {
 		input = new Scanner(System.in);
 		user = new User();
-		//user.loadCourses();
+		Courses.getCourses();
 	}
 	
 	/**
@@ -455,7 +455,7 @@ public class CourseRecommendationDriver {
 		System.out.println("Enter the student's letter grade (A, B+,...)");
 		String grade = input.nextLine();
 	
-		((Advisor) user).addStudentGrade(((Advisor) user).advisees.get(choice-1), course, grade);
+		((Advisor) user).addCourseTaken(((Advisor) user).advisees.get(choice-1), course, grade);
 		System.out.println("Grade Added!");
 		AdvisorMenu();
 	}
