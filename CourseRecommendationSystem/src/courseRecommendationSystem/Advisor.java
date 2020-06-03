@@ -7,7 +7,13 @@ import java.util.ArrayList;
  * @author natmonz
  */
 public class Advisor extends User{
-	protected ArrayList<Student> advisees = new ArrayList<Student>(); 
+	private String name;
+	protected ArrayList<Student> advisees; 
+	
+	public Advisor(String name) {
+		this.name = name;
+		advisees = new ArrayList<Student>();
+	}
 	
 	/**
 	 * function that adds a student grade to the student grade Hashmap
@@ -40,6 +46,14 @@ public class Advisor extends User{
 		else {
 			System.out.println("System error: Student has incorrectly formatted GPA"); 
 		}
+	}
+	
+	/**
+	 * function that adds a student to Advisor's advisees ArrayList
+	 * @param student A Student object
+	 */
+	public void addStudent(Student student) {
+		this.advisees.add(student);
 	}
 	
 	/**
