@@ -1,5 +1,6 @@
 package courseRecommendationSystem;
 import java.util.Scanner;
+
 /**
  * The Driver for the Course Recommendation System. It creates all the menus for the User and loads all of the courses from file
  * @author justinbrown
