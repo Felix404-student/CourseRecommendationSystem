@@ -7,13 +7,14 @@ import java.util.HashMap;
  * @author natmonz
  */
 public class Major {
-	private HashMap<String, String[]> majors = new HashMap<String, String[]>(); 
-
+	//private HashMap<String, String[]> majors = new HashMap<String, String[]>(); 
+	private String majorName; 
+	private ArrayList<String> courses; 
 	/**
 	 * function that creates a Major
 	 * @param majorName String of a type of major, classes, A String array of required courses
 	 */
-	Major(HashMap<String, String[]> majors) {
-		this.majors = majors; 
+	Major(String majorName, ArrayList<String> courses) {
+		//
 	}
 }
