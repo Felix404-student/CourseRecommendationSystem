@@ -1,6 +1,10 @@
 
 package courseRecommendationSystem;
 
+/**
+ * Allows casting of User to Admin, granting extra privileges to user
+ * @author natmonz
+ */
 public class Admin extends User{
 	/**
 	 * This function will add a student to the Arraylist of students in the system
