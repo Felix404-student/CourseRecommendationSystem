@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Singleton design pattern class for Advisor objects
  * Uses CourseLoader to load Advisor data from file
- * @author justinbrown
+ * @author justinbrown dongyu chen
  */
 public class Advisors {
 	private static Advisors advisors;
