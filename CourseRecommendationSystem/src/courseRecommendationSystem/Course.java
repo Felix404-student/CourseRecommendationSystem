@@ -44,11 +44,11 @@ public class Course {
 		this.name = name; 
 		this.code = code; 
 		this.credits = credits; 
-		this.prerequisites = prerequisites;
-		this.corequisites = corequisites;
-		this.courseSpring = courseSpring;
-		this.courseSummer = courseSummer;
-		this.courseFall = courseFall;
+		this.prerequisites = prerequisites2;
+		this.corequisites = corequisites2;
+		this.courseSpring = courseOfferingSpring;
+		this.courseSummer = courseOfferingSummer;
+		this.courseFall = courseOfferingFall;
 	}
 
 	/**

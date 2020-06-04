@@ -34,18 +34,43 @@ public class Students {
 	 * @return Whether or not the system can find that Student
 	 */
 	public boolean haveStudent(String name) {
-		return true;
+		for(int i = 0; i < studentList.size();++i) {
+			if(name.equals(studentList.get(i).getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
 	 * If Student exists, return the instance of the Student
+	 * Call haveStudent first.
 	 * @param name String to search studentList for
 	 * @return The Student object from ArrayList studentList
 	 */
 	public Student getStudent(String name) {
-		if (!haveStudent(name)) {
-			return null;
-		}
+		for(int i = 0; i < studentList.size();++i) {
+			if(name.equals(studentList.get(i).getName())){
+				return studentList.get(i);
+				}
+			}
 		return null;
+	}
+	
+	/**
+	 * Adds a new Student to out arrayList of Students
+	 * @param student A newly created Student object
+	 */
+	public void addStudent(Student student) {
+		studentList.add(student);
+	}
+	
+	/**
+	 * Deletes a Student from studentList
+	 * Check haveStudent first.
+	 * @param student A Student in studentList
+	 */
+	public void removeStudent(Student student) {
+		studentList.remove(student);
 	}
 }

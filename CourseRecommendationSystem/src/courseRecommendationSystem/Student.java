@@ -8,7 +8,7 @@ import java.util.HashMap;
  * @author natmonz
  */
 public class Student extends User{
-	private int studentID; 
+	private String studentID; 
 	private Major major;
 	protected ArrayList<Course> coursesTaken = new ArrayList<Course>();
 	protected ArrayList<Course> coursesNow = new ArrayList<Course>(); 
@@ -21,7 +21,7 @@ public class Student extends User{
 	 * @param studentID Integer student's ID
 	 * @param major String of student's major
 	 */
-	Student(String name, int studentID, String major) {
+	Student(String name, String studentID, String major) {
 		this.name = name; 
 		this.classification = "Student"; 
 		this.studentID = studentID; 
