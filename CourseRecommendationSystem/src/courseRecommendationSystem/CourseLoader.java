@@ -123,33 +123,7 @@ public class CourseLoader{
 	
 	/**
 	 * A method which loads the majors from a JSON record
-	 * @return students, an arrayList
-	 */
-	public static HashMap<String, String[]> loadMajor() {
-		HashMap<String,Course[]> majorList = new HashMap<String,Course[]>();
-		try {
-			FileReader reader = new FileReader(MAJOR_FILE_NAME);
-			JSONParser parser = new JSONParser();
-			JSONArray coursesJSON = (JSONArray)new JSONParser().parse(reader);
-			for(int i=0; i < coursesJSON.size(); i++){
-				JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
-				// not sure if this is going to work 
-				String major_name = (String)courseJSON.get(MAJOR_NAME);
-				String[] major_classes = (String)courseJSON.get(MAJOR_CLASS);
-				majorList.put(major_name,major_classes);
-				return majorList;
-			}
-			// can the function be void now that this instance is created? 
-			Major majorList = new Major(majorList); 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	/**
-	 * A method which loads the majors from a JSON record
-	 * @return students, an arrayList
+	 * @return HashMap, A Hashmap of names of majors to major objects 
 	 */
 	
 	public static HashMap<String, Major> loadMajor() {
@@ -162,12 +136,11 @@ public class CourseLoader{
 				JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
 				String major_name = (String)courseJSON.get(MAJOR_NAME);
 				ArrayList<String> courses = new ArrayList<String>(); 
-				// then read through array of strings in JSON and put in courses arraylist 
+				// then read through array of strings in JSON and put in the courses arraylist 
 				Major major = new Major(major_name, courses); 
 				majorList.put(major_name,major);
-				return majorList;
 			}
-			// can the function be void now that this instance is created? 
+			return majorList;
 
 		} catch (Exception e) {
 			e.printStackTrace();

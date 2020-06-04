@@ -36,7 +36,7 @@ public class Student extends User{
 	 */
 	public void setMajor(String major) {
 		if(major.equalsIgnoreCase("cs") || (major.equalsIgnoreCase("ce")) || (major.equalsIgnoreCase("cis")) ) {
-			this.major = major; 
+			//this.major = majorList.get(major); 
 			//this.requiredCourses = Major.get(major); 
 		}
 		else { 

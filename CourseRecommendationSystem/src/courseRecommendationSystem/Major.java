@@ -7,7 +7,6 @@ import java.util.HashMap;
  * @author natmonz
  */
 public class Major {
-	//private HashMap<String, String[]> majors = new HashMap<String, String[]>(); 
 	private String majorName; 
 	private ArrayList<String> courses; 
 	/**
