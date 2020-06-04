@@ -15,6 +15,10 @@ public class Advisor extends User{
 		advisees = new ArrayList<Student>();
 	}
 	
+	public String getName() {
+		return this.name;
+	}
+	
 	/**
 	 * function that adds a student grade to the student grade Hashmap
 	 * @param student A student

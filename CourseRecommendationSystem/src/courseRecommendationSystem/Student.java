@@ -11,7 +11,7 @@ public class Student extends User{
 	private String studentID; 
 	//private Major major;
 	protected String major; 
-	protected String[] requiredCourses = new String[]; 
+	//protected String[] requiredCourses = new String[]; 
 	protected ArrayList<Course> coursesTaken = new ArrayList<Course>();
 	protected ArrayList<Course> coursesNow = new ArrayList<Course>(); 
 	protected HashMap<Course, String> grades = new HashMap<Course, String>();
@@ -37,11 +37,11 @@ public class Student extends User{
 	public void setMajor(String major) {
 		if(major.equalsIgnoreCase("cs") || (major.equalsIgnoreCase("ce")) || (major.equalsIgnoreCase("cis")) ) {
 			this.major = major; 
-			this.requiredCourses = Major.get(major); 
+			//this.requiredCourses = Major.get(major); 
 		}
 		else { 
 			this.major = "cs";
-			this.requiredCourses = Major.get("cs"); 
+			//this.requiredCourses = Major.get("cs"); 
 		}
 	}
 	

@@ -10,14 +10,12 @@ public class CourseRecommendationDriver {
 	private static final String PROMPT = "\nPlease select your choice by number:";
 	private String[] loginMenuOptions = {"Student", "Advisor", "Admin"};
 	private String[] studentLoginOptions = {"I already have a Student Account", "I need to make a Student Account"};
-	private String[] studentMenuOptions = {"Add Course Taken", "Add a Current Course", "Print Courses Taken", "Print Recommended Schedule", "Rate a Professor", "Logout"};
+	private String[] studentMenuOptions = {"Add Course Taken", "Add a Current Course", "Print Courses Taken", "Print Recommended Schedule", "Logout"};
 	private String[] advisorLoginOptions = {"I already have an Advisor Account", "I need to make a Advisor Account"};
 	private String[] advisorMenuOptions = {"Add a Student to your profile", "Check a Student's GPA", "Add a Student's Grade", "Logout"};
 	private static final String ADMIN_PROMPT = "Please enter the Admin password";
 	private static final String PASSWORD = "ADMINISTRATOR";
 	private String[] adminMenuOptions = {"Add Student", "Remove Student", "Add Advisor", "Remove Advisor", "Logout"};
-	private static final String FILE_PROMPT = "Please enter the file name:";
-	private static final String NO_FILE = "Sorry, I couldn't find that file.";
 	private String[] semesterOptions = {"Fall", "Spring", "Summer"};
 	private Scanner input;
 	private User user;
@@ -25,9 +23,9 @@ public class CourseRecommendationDriver {
 	public CourseRecommendationDriver() {
 		input = new Scanner(System.in);
 		user = new User();
-		Courses.getCourses();
-		Students.getStudents();
-		Advisors.getAdvisors();
+		Courses courses = Courses.getCourses();
+		Students students = Students.getStudents();
+		Advisors advisors = Advisors.getAdvisors();
 	}
 	
 	/**
@@ -52,9 +50,7 @@ public class CourseRecommendationDriver {
 		default:
 			System.out.println("Error in role selection");
 			break;
-		}
-		
-		//WHERE DO WE GO FROM HERE?
+		}		
 	}
 	
 	/**
@@ -85,7 +81,7 @@ public class CourseRecommendationDriver {
 	
 	/*
 	 * Prompts the user for the name of their Student text file in the class path
-	 * Tries to load the Student information from file. If not, displays NO_FILE message
+	 * Tries to load the Student information from file. If not, go to login menu
 	 */
 	public void StudentLogin() {
 		int choice;
@@ -96,13 +92,17 @@ public class CourseRecommendationDriver {
 			System.out.println("What is your full name, according to your profile?");
 			input = new Scanner(System.in);
 			String name = input.nextLine();
-			/*if (Students.haveStudent(name)) {
-				user = Students.getStudent(name);
+			Students students = Students.getStudents();
+			
+			if (students.haveStudent(name)) {
+				user = students.getStudent(name);
+				System.out.println("Welcome, "+ name + "\n");
+				
 				StudentMenu();
 			} else {
-				System.out.println("Sorry, we could not find a student by that name.");
+				System.out.println("Sorry, we could not find a student by that name.\n");
 				run();
-			}*/
+			}
 		} else {
 			NewStudent();
 		}
@@ -131,9 +131,6 @@ public class CourseRecommendationDriver {
 				StudentPrintSchedule();
 				break;
 			case(5):
-				StudentRateProfessor();
-				break;
-			case(6):
 				//user.save();
 				run();
 				break;
@@ -146,7 +143,7 @@ public class CourseRecommendationDriver {
 	
 	/**
 	 * Prompts the user for the name of their Advisor text file in the class path
-	 * Tries to load the Advisor information from file. If not, displays NO_FILE message
+	 * Tries to load the Advisor information from file. If not, go to login menu
 	 */
 	public void AdvisorLogin() {
 		int choice;
@@ -157,13 +154,17 @@ public class CourseRecommendationDriver {
 			System.out.println("What is your full name, according to your profile?");
 			input = new Scanner(System.in);
 			String name = input.nextLine();
-			/*if (Advisors.haveAdvisor(name)) {
-				user = Advisors.getAdvisor(name);
+			Advisors advisors = Advisors.getAdvisors();
+			
+			if (advisors.haveAdvisor(name)) {
+				user = advisors.getAdvisor(name);
+				System.out.println("Welcome, "+ name + "\n");
+				
 				AdvisorMenu();
 			} else {
-				System.out.println("Sorry, we could not find an Advisor by that name.");
+				System.out.println("Sorry, we could not find an Advisor by that name.\n");
 				run();
-			}*/
+			}
 		} else {
 			NewAdvisor();
 		}
@@ -209,8 +210,10 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		String password = input.nextLine();
 		if (password.equals(PASSWORD)) {
-			//Admin admin = new Admin();
-			//user = admin;
+			Admin admin = new Admin();
+			user = admin;
+			System.out.println("Welcome, Systems Administrator.\n");
+			
 			AdminMenu();
 		} else {
 			System.out.println("Sorry, that was not correct.\n");
@@ -261,17 +264,18 @@ public class CourseRecommendationDriver {
 		String name = input.nextLine();
 		
 		System.out.println("Please enter a Student ID number");
-		int id = input.nextInt();
-		input.nextLine();
+		String id = input.nextLine();
 		
 		String major = "";
 		while (!(major.equals("ce") || major.equals("cs") || major.equals("cis"))) {
 			System.out.println("Please enter a Major (CS, CE, or CIS)");
 			major = input.nextLine().toLowerCase();
 		}
-		
 		Student newStudent = new Student(name, id, major);
+		Students students = Students.getStudents();
+		students.addStudent(newStudent);
 		user = newStudent;
+		
 		System.out.println("Welcome, " + name);
 		StudentMenu();
 	}
@@ -286,47 +290,54 @@ public class CourseRecommendationDriver {
 		String name = input.nextLine();
 		
 		Advisor newAdvisor = new Advisor(name);
+		Advisors advisors = Advisors.getAdvisors();
+		advisors.addAdvisor(newAdvisor);
 		user = newAdvisor;
-		System.out.println("Welcome, " + name);
+		
+		System.out.println("Welcome, " + name + "\n");
 		AdvisorMenu();
 	}
 	
 	/**
-	 * Incomplete function to link to Student.addCourseTaken()
-	 * Needs to be able to locate correct course object
+	 * Finds a course in Course by user-entered Course Code
+	 * Puts that course in user's (Student) coursesTaken, along with entered grade.
 	 * Returns flow of control to Student Menu
 	 */
 	public void StudentAddCourseTaken() {
 		input = new Scanner(System.in);
-		System.out.println("Enter the Course Code (for example, CSCE247):");
+		System.out.println("Enter the Course Code (for example, CSCE 247):");
 		String code = input.nextLine();
-		//TO-DO: find course by code in courses
 		
-		Course course = new Course("TEST COURSE 1", code, 999);
+		Courses courses = Courses.getCourses();
+		if (courses.haveCourse(code)) {
+			System.out.println("Enter your letter grade for " + code + " (A, B+, B...):");
+			String grade = input.nextLine();
 		
-		System.out.println("Enter your letter grade in that course (A, B+,...):");
-		code = input.nextLine();
-		
-		((Student) user).addCourseTaken(course, code);
-		System.out.println("Course Added!\n");
+			((Student) user).addCourseTaken(courses.getCourse(code), grade);
+			System.out.println("Course Added!\n");
+		} else {
+			System.out.println("Sorry, we could not find a course with that code.\n");
+		}
 		StudentMenu();
 	}
 	
 	/**
-	 * Incomplete function to link to Student.addCourseCurrent()
-	 * Needs to be able to locate correct course object
+	 * Finds a course in Course by user-entered Course Code
+	 * Puts that course in user's (Student) coursesNow
 	 * Returns flow of control to Student Menu
 	 */
 	public void StudentAddCurrentCourse() {
 		input = new Scanner(System.in);
-		System.out.println("Enter the Course Code (for example, CSCE247):");
+		System.out.println("Enter the Course Code (for example, CSCE 247):");
 		String code = input.nextLine();
-		//TO-DO: find course by code in courses
 		
-		Course course = new Course("TEST COURSE 2", code, 999);
-		
-		((Student) user).addCourseCurrent(course);
-		System.out.println("Course Added!\n");
+		Courses courses = Courses.getCourses();
+		if (courses.haveCourse(code)) {		
+			((Student) user).addCourseCurrent(courses.getCourse(code));
+			System.out.println("Course Added!\n");
+		} else {
+			System.out.println("Sorry, we could not find a course with that code.\n");
+		}
 		StudentMenu();
 	}
 	
@@ -385,26 +396,26 @@ public class CourseRecommendationDriver {
 			input.nextLine();
 		}
 		//professors[choice-1].rate(rating);
-		System.out.println("Professor rated");
+		System.out.println("Professor rated!\n");
 		StudentMenu();
 	}
 	
 	/**
-	 * Incomplete function to add a Student to an Advisors ArrayList of Advisees
-	 * Needs ability to find correct Student object
+	 * Finds a Student by name in Students and add them to an Advisor's ArrayList of Advisees
 	 * Returns flow of control to Advisor Menu
 	 */
 	public void AdvisorAddStudent() {
 		input = new Scanner(System.in);
 		System.out.println("What is the Student's full name?");
 		String student = input.nextLine();
-		//TO-DO: find student in students file
-		//TO-DO: load student from file
-		
-		Student newStudent = new Student(student, 9999, "cs");
-		((Advisor) user).addStudent(newStudent);
-		
-		System.out.println("Student Added!");
+
+		Students students = Students.getStudents();
+		if (students.haveStudent(student)) {
+			((Advisor) user).addStudent(students.getStudent(student));
+			System.out.println("Student Added!\n");
+		} else {
+			System.out.println("Sorry, we could not find a student by that name.\n");
+		}
 		AdvisorMenu();
 	}
 	
@@ -429,6 +440,9 @@ public class CourseRecommendationDriver {
 	
 	/**
 	 * Allows Advisor to add a grade for a course to a Student's file
+	 * Displays Advisor's Advisees, user chooses a Student
+	 * Finds Course in Courses by user-entered Course Code
+	 * Adds Course to Student's CoursesTaken, along with user-entered grade
 	 * Returns flow of control to Advisor Menu
 	 */
 	public void AdvisorAddStudentGrade() {
@@ -440,16 +454,19 @@ public class CourseRecommendationDriver {
 		int choice = input.nextInt();
 		input.nextLine();
 		
-		System.out.println("Enter the Course Code (For example, CSCE247)");
+		System.out.println("Enter the Course Code (For example, CSCE 247)");
 		String code  = input.nextLine();
-		//TO-DO: find course by code in courses
-		Course course = new Course("TEST COURSE 1", code, 999);
 		
-		System.out.println("Enter the student's letter grade (A, B+,...)");
-		String grade = input.nextLine();
+		Courses courses = Courses.getCourses();
+		if (courses.haveCourse(code)) {
+			System.out.println("Enter the student's letter grade (A, B+, B...)");
+			String grade = input.nextLine();
 	
-		((Advisor) user).addCourseTaken(((Advisor) user).advisees.get(choice-1), course, grade);
-		System.out.println("Grade Added!");
+			((Advisor) user).addCourseTaken(((Advisor) user).advisees.get(choice-1), courses.getCourse(code), grade);
+			System.out.println("Grade Added!\n");
+		} else {
+			System.out.println("Sorry, we could not find a course with that code\n");
+		}
 		AdvisorMenu();
 	}
 	
@@ -558,8 +575,7 @@ public class CourseRecommendationDriver {
 	}
 	
 	/**
-	 * Incomplete function allows Admin to create a new Student object
-	 * Needs... Admin class to exist
+	 * Allows Admin to add a Student to Students
 	 * Returns flow of control to Advisor Menu
 	 */
 	public void AdminAddStudent() {
@@ -568,8 +584,7 @@ public class CourseRecommendationDriver {
 		String name = input.nextLine();
 		
 		System.out.println("Enter a Student ID number");
-		int id = input.nextInt();
-		input.nextLine();
+		String id = input.nextLine();
 		
 		String major = "";
 		while (!(major.equals("ce") || major.equals("cs") || major.equals("cis"))) {
@@ -578,32 +593,35 @@ public class CourseRecommendationDriver {
 		}
 		
 		Student newStudent = new Student(name, id, major);
-		//studentfile.addStudent(newStudent);
+		Students students = Students.getStudents();
+		students.addStudent(newStudent);
 		
 		System.out.println("Student added!");
 		AdminMenu();
 	}
 	
 	/**
-	 * Incomplete function allows Admin to delete a Student object
-	 * Needs... Admin class to exist
+	 * Finds a Student by name in studentList... and deletes them
 	 * Returns flow of control to Advisor Menu
 	 */
 	public void AdminRemoveStudent() {
 		input = new Scanner(System.in);
 		System.out.println("Enter a Student name");
 		String name = input.nextLine();
-		//TO_DO: find student name in students file
-		//studentfile.delete(name);
 		
-		System.out.println("Student removed!");
+		Students students = Students.getStudents();
+		if (students.haveStudent(name)) {
+			students.removeStudent(students.getStudent(name));
+			System.out.println("Student removed!\n");
+		} else {
+			System.out.println("There was no student by that name.\n");
+		}
 		AdminMenu();
 	}
 	
 	/**
-	 * Incomplete function allows Admin to create a new Advisor object
-	 * Needs... Admin class to exist
-	 * Returns flow of control to Advisor Menu
+	 * Allows an Admin to add a new Advisor to advisorList, along with adding advisees to them
+	 * Returns flow of control to Admin Menu
 	 */
 	public void AdminAddAdvisor() {
 		input = new Scanner(System.in);
@@ -617,32 +635,40 @@ public class CourseRecommendationDriver {
 			response = input.nextLine();
 			System.out.println("What is the Student's full name?");
 			response = input.nextLine();
-			Student student = new Student (response, 9999, "cs");
 			
-			//TO_DO: find student in students file
-			newAdvisor.advisees.add(student);
+			Students students = Students.getStudents();
+			if (students.haveStudent(response)) {
+				newAdvisor.addStudent(students.getStudent(response));
+				System.out.println("Advisee added!\n");
+			} else {
+				System.out.println("We could not find a student by that name\n");
+			}
 			System.out.println("Would you like to add another advisee?");
 			response = input.nextLine();
 		}
+		Advisors advisors = Advisors.getAdvisors();
+		advisors.addAdvisor(newAdvisor);
 		
-		//advisorfile.addAdvisor(newAdvisor);
-		System.out.println("Advisor added!");
+		System.out.println("Advisor added!\n");
 		AdminMenu();
 	}
 	
 	/**
-	 * Incomplete function allows Admin to delete a Advisor object
-	 * Needs... Admin class to exist
+	 * Allows Admin to delete an Advisor object from advisorList
 	 * Returns flow of control to Advisor Menu
 	 */
 	public void AdminRemoveAdvisor() {
 		input = new Scanner(System.in);
 		System.out.println("Enter an Advisor name");
 		String name = input.nextLine();
-		//TO_DO: find advisor name in advisor file
-		//advisorfile.delete(name);
 		
-		System.out.println("Advisor removed!");
+		Advisors advisors = Advisors.getAdvisors();
+		if (advisors.haveAdvisor(name)) {
+			advisors.removeAdvisor(advisors.getAdvisor(name));
+			System.out.println("Advisor removed!\n");
+		} else {
+			System.out.println("There was no advisor by that name.\n");
+		}
 		AdminMenu();
 	}
 	

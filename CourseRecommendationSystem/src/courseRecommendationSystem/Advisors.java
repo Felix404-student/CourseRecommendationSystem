@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Singleton design pattern class for Advisor objects
  * Uses CourseLoader to load Advisor data from file
- * @author justinbrown dongyu chen
+ * @author justinbrown, dongyu chen
  */
 public class Advisors {
 	private static Advisors advisors;
@@ -34,7 +34,7 @@ public class Advisors {
 	 * @return Whether or not the system can find that Advisor
 	 */
 	public boolean haveAdvisor(String name) {
-		for(int i = 0; i < advisorList.size();i++) {
+		for(int i = 0; i < advisorList.size();++i) {
 			if(name.equals(advisorList.get(i).getName())){
 				return true;
 			}
@@ -44,19 +44,33 @@ public class Advisors {
 	
 	/**
 	 * If Student exists, return the instance of the Student
+	 * Check haveAdvisor first.
 	 * @param name String to search studentList for
 	 * @return The Advisor object from ArrayList advisorList
 	 */
 	public Advisor getAdvisor(String name) {
-		if (!haveAdvisor(name)) {
-			return null;
-		}else {
-			for(int i = 0; i < advisorList.size();i++) {
-				if(name.equals(advisorList.get(i).getName())){
-					return advisorList.get(i);
-				}
+		for(int i = 0; i < advisorList.size();++i) {
+			if(name.equals(advisorList.get(i).getName())){
+				return advisorList.get(i);
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Adds a new Advisor to our arrayList of Advisors
+	 * @param advisor A new Advisor object
+	 */
+	public void addAdvisor(Advisor advisor) {
+		advisorList.add(advisor);
+	}
+	
+	/**
+	 * Finds an Advisor in advisorList... and deletes them
+	 * Check haveAdvisor first.
+	 * @param advisor
+	 */
+	public void removeAdvisor(Advisor advisor) {
+		advisorList.remove(advisor);
 	}
 }

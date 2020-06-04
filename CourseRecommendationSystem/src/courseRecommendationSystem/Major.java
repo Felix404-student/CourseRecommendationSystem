@@ -13,7 +13,7 @@ public class Major {
 	 * function that creates a Major
 	 * @param majorName String of a type of major, classes, A String array of required courses
 	 */
-	Major(HashMap<String, String[] majors>) {
+	Major(HashMap<String, String[]> majors) {
 		this.majors = majors; 
 	}
 }

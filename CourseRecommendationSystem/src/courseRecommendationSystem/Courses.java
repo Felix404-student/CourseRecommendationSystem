@@ -34,7 +34,12 @@ public class Courses {
 	 * @return Whether or not the system can find that course
 	 */
 	public boolean haveCourse(String courseCode) {
-		return true;
+		for(int i = 0; i < courseList.size();++i) {
+			if(courseCode.equals(courseList.get(i).getCode())){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
@@ -43,8 +48,10 @@ public class Courses {
 	 * @return The Course object from ArrayList courseList
 	 */
 	public Course getCourse(String courseCode) {
-		if (!haveCourse(courseCode)) {
-			return null;
+		for(int i = 0; i < courseList.size();++i) {
+			if(courseCode.equals(courseList.get(i).getCode())){
+				return courseList.get(i);
+			}
 		}
 		return null;
 	}

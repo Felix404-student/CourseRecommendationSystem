@@ -1,12 +1,13 @@
 
-public class Admin {
-	
+package courseRecommendationSystem;
+
+public class Admin extends User{
 	/**
 	 * This function will add a student to the Arraylist of students in the system
 	 * @param student A student
 	 */
 	public void addStudent(Student student) {
-		Students.add(student); 
+		//Students.add(student); 
 	}
 	
 	/**
@@ -14,7 +15,7 @@ public class Admin {
 	 * @param student A student
 	 */
 	public void removeStudent(Student student) {
-		Students.remove(student);
+		//Students.remove(student);
 	}
 	
 	/**
@@ -22,7 +23,7 @@ public class Admin {
 	 * @param advisor An advisor
 	 */
 	public void addAdvisor(Advisor advisor) {
-		Advisors.add(advisor);
+		//Advisors.add(advisor);
 	}
 	
 	/**
@@ -30,6 +31,6 @@ public class Admin {
 	 * @param advisor An advisor
 	 */
 	public void removeAdvisor(Advisor advisor) {
-		Advisors.remove(advisor);
+		//Advisors.remove(advisor);
 	}
 }
