@@ -210,8 +210,8 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		String password = input.nextLine();
 		if (password.equals(PASSWORD)) {
-			//Admin admin = new Admin();
-			//user = admin;
+			Admin admin = new Admin();
+			user = admin;
 			System.out.println("Welcome, Systems Administrator.\n");
 			
 			AdminMenu();

@@ -1,23 +1,19 @@
 package courseRecommendationSystem;
 
 import java.util.ArrayList;
+import java.util.HashMap; 
 /**
  * Class that creates a major object 
  * @author natmonz
  */
 public class Major {
-	private String intendedDegree = null; 
-	private ArrayList<Course> gradReqCS = new ArrayList<Course>(); 
-	private ArrayList<Course> gradReqCE = new ArrayList<Course>(); 
-	private ArrayList<Course> gradReqCIS = new ArrayList<Course>(); 
-	
+	private HashMap<String, String[]> majors = new HashMap<String, String[]>(); 
+
 	/**
-	 * function that sets a Major based on a String parameter 
-	 * @param intendedDegree String of a type of degree
+	 * function that creates a Major
+	 * @param majorName String of a type of major, classes, A String array of required courses
 	 */
-	Major(String intendedDegree) {
-		this.intendedDegree = intendedDegree; 
+	Major(HashMap<String, String[]> majors) {
+		this.majors = majors; 
 	}
-	
-	
 }
