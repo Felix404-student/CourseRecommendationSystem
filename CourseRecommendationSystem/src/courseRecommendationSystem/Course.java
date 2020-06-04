@@ -1,9 +1,11 @@
 package courseRecommendationSystem;
-
 import java.util.ArrayList;
 /**
+
  * Class that creates a Course object 
- * @author natmonz
+
+ * @author natmonz, dongyu chen
+
  */
 public class Course {
 	private String name; 
