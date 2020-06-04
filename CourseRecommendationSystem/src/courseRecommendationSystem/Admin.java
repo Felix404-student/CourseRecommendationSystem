@@ -1,5 +1,9 @@
 package courseRecommendationSystem;
 
+/**
+ * Allows casting of User to Admin, granting extra privileges to user
+ * @author natmonz
+ */
 public class Admin extends User{
 	
 	/**
