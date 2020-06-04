@@ -9,7 +9,9 @@ import java.util.HashMap;
  */
 public class Student extends User{
 	private String studentID; 
-	private Major major;
+	//private Major major;
+	protected String major; 
+	protected String[] requiredCourses = new String[]; 
 	protected ArrayList<Course> coursesTaken = new ArrayList<Course>();
 	protected ArrayList<Course> coursesNow = new ArrayList<Course>(); 
 	protected HashMap<Course, String> grades = new HashMap<Course, String>();
@@ -23,7 +25,6 @@ public class Student extends User{
 	 */
 	Student(String name, String studentID, String major) {
 		this.name = name; 
-		this.classification = "Student"; 
 		this.studentID = studentID; 
 		setMajor(major); 
 		this.cumulativeGPA = 0.0; 
@@ -34,13 +35,13 @@ public class Student extends User{
 	 * @param major String that is a Student's major
 	 */
 	public void setMajor(String major) {
-		if(!(major.equals("cs")) && !(major.equals("ce")) && !(major.equals("cis"))) {
-			//System.out.println("The system only works for computer science, computer engineering, "
-								//+ "and computer information system majors. The major will default to cs");
-			this.major = new Major("cs"); 
+		if(major.equalsIgnoreCase("cs") || (major.equalsIgnoreCase("ce")) || (major.equalsIgnoreCase("cis")) ) {
+			this.major = major; 
+			this.requiredCourses = Major.get(major); 
 		}
 		else { 
-			this.major = new Major(major); 
+			this.major = "cs";
+			this.requiredCourses = Major.get("cs"); 
 		}
 	}
 	
