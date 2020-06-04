@@ -55,4 +55,13 @@ public class Courses {
 		}
 		return null;
 	}
+	
+	/**
+	 * Test method, not used in production 
+	 */
+	public void printCourses() {
+		for(int i = 0; i < courseList.size();++i) {
+			System.out.println(courseList.get(i).getCode() + "\t" + courseList.get(i).getName());
+		}
+	}
 }

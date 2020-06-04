@@ -305,14 +305,20 @@ public class CourseRecommendationDriver {
 	 */
 	public void StudentAddCourseTaken() {
 		input = new Scanner(System.in);
+		Courses courses = Courses.getCourses();
+				
 		System.out.println("Enter the Course Code (for example, CSCE 247):");
 		String code = input.nextLine();
 		
-		Courses courses = Courses.getCourses();
 		if (courses.haveCourse(code)) {
-			System.out.println("Enter your letter grade for " + code + " (A, B+, B...):");
-			String grade = input.nextLine();
-		
+			String grade = "";
+			while (grade.length() < 1 || grade.length() > 2) {
+				System.out.println("Enter your letter grade for " + code + " (A, B+, B...):");
+				grade = input.nextLine();
+				if (grade.length() < 1 || grade.length() > 2) {
+					System.out.println("That grade was not formatted correctly.\n");
+				}
+			}
 			((Student) user).addCourseTaken(courses.getCourse(code), grade);
 			System.out.println("Course Added!\n");
 		} else {
@@ -350,6 +356,7 @@ public class CourseRecommendationDriver {
 		for (Course course : ((Student) user).coursesTaken) {
 			System.out.println(course.toString());
 		}
+		System.out.println();
 		StudentMenu();
 	}
 	
@@ -434,6 +441,7 @@ public class CourseRecommendationDriver {
 		input.nextLine();
 		
 		((Advisor) user).checkGPA(((Advisor) user).advisees.get(choice-1));
+		System.out.println();
 		
 		AdvisorMenu();
 	}
@@ -459,9 +467,14 @@ public class CourseRecommendationDriver {
 		
 		Courses courses = Courses.getCourses();
 		if (courses.haveCourse(code)) {
-			System.out.println("Enter the student's letter grade (A, B+, B...)");
-			String grade = input.nextLine();
-	
+			String grade = "";
+			while (grade.length() < 1 || grade.length() > 2) {
+				System.out.println("Enter your letter grade for " + code + " (A, B+, B...):");
+				grade = input.nextLine();
+				if (grade.length() < 1 || grade.length() > 2) {
+					System.out.println("That grade was not formatted correctly.\n");
+				}
+			}
 			((Advisor) user).addCourseTaken(((Advisor) user).advisees.get(choice-1), courses.getCourse(code), grade);
 			System.out.println("Grade Added!\n");
 		} else {
