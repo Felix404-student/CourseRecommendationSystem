@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Advisor extends User{
 	private String name;
 	protected ArrayList<Student> advisees; 
+	protected String advisees_s = "null";
 	
 	public Advisor(String name) {
 		this.name = name;
