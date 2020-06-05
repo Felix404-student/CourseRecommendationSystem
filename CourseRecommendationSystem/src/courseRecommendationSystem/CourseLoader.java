@@ -126,7 +126,7 @@ public class CourseLoader{
 	 * @return HashMap, A Hashmap of names of majors to major objects 
 	 */
 	
-	public static HashMap<String, Major> loadMajor() {
+	public static HashMap<String, Major> loadMajors() {
 		HashMap<String,Major> majorList = new HashMap<String,Major>();
 		try {
 			FileReader reader = new FileReader(MAJOR_FILE_NAME);

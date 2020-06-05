@@ -14,7 +14,7 @@ public class Majors {
 	 * Private constructor to load all majors from file
 	 */
 	private Majors() {
-		this.majorList = CourseLoader.loadMajor();
+		this.majorList = CourseLoader.loadMajors();
 	}
 	
 	/**
