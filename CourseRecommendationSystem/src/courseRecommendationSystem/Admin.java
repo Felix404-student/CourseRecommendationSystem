@@ -6,12 +6,24 @@ package courseRecommendationSystem;
  * @author natmonz
  */
 public class Admin extends User{
+	private static final String PASSWORD = "ADMINISTRATOR";
+	
+	/**
+	 * Check password to login as Admin
+	 * @param guess A string to check against the password
+	 * @return whether or not the guess matches
+	 */
+	public boolean checkPassword(String guess) {
+		return (guess.equals(PASSWORD));
+	}
+	
 	/**
 	 * This function will add a student to the Arraylist of students in the system
 	 * @param student A student
 	 */
 	public void addStudent(Student student) {
-		//Students.add(student); 
+		Students students = Students.getStudents();
+		students.addStudent(student);
 	}
 	
 	/**
@@ -19,7 +31,8 @@ public class Admin extends User{
 	 * @param student A student
 	 */
 	public void removeStudent(Student student) {
-		//Students.remove(student);
+		Students students = Students.getStudents();
+		students.removeStudent(student);
 	}
 	
 	/**
@@ -27,7 +40,8 @@ public class Admin extends User{
 	 * @param advisor An advisor
 	 */
 	public void addAdvisor(Advisor advisor) {
-		//Advisors.add(advisor);
+		Advisors advisors = Advisors.getAdvisors();
+		advisors.addAdvisor(advisor);
 	}
 	
 	/**
@@ -35,6 +49,7 @@ public class Admin extends User{
 	 * @param advisor An advisor
 	 */
 	public void removeAdvisor(Advisor advisor) {
-		//Advisors.remove(advisor);
+		Advisors advisors = Advisors.getAdvisors();
+		advisors.removeAdvisor(advisor);
 	}
 }
