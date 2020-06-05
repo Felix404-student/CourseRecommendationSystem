@@ -14,7 +14,6 @@ public class CourseRecommendationDriver {
 	private String[] advisorLoginOptions = {"I already have an Advisor Account", "I need to make a Advisor Account"};
 	private String[] advisorMenuOptions = {"Add a Student to your profile", "Check a Student's GPA", "Add a Student's Grade", "Logout"};
 	private static final String ADMIN_PROMPT = "Please enter the Admin password";
-	private static final String PASSWORD = "ADMINISTRATOR";
 	private String[] adminMenuOptions = {"Add Student", "Remove Student", "Add Advisor", "Remove Advisor", "Logout"};
 	private String[] semesterOptions = {"Fall", "Spring", "Summer"};
 	private Scanner input;
@@ -213,8 +212,8 @@ public class CourseRecommendationDriver {
 		System.out.println(ADMIN_PROMPT);
 		input = new Scanner(System.in);
 		String password = input.nextLine();
-		if (password.equals(PASSWORD)) {
-			Admin admin = new Admin();
+		Admin admin = new Admin();
+		if (admin.checkPassword(password)) {
 			user = admin;
 			System.out.println("Welcome, Systems Administrator.\n");
 			
@@ -610,8 +609,7 @@ public class CourseRecommendationDriver {
 		}
 		
 		Student newStudent = new Student(name, id, major);
-		Students students = Students.getStudents();
-		students.addStudent(newStudent);
+		((Admin) user).addStudent(newStudent);
 		
 		System.out.println("Student added!");
 		AdminMenu();
@@ -628,7 +626,7 @@ public class CourseRecommendationDriver {
 		
 		Students students = Students.getStudents();
 		if (students.haveStudent(name)) {
-			students.removeStudent(students.getStudent(name));
+			((Admin) user).removeStudent(students.getStudent(name));
 			System.out.println("Student removed!\n");
 		} else {
 			System.out.println("There was no student by that name.\n");
@@ -663,8 +661,7 @@ public class CourseRecommendationDriver {
 			System.out.println("Would you like to add another advisee?");
 			response = input.nextLine();
 		}
-		Advisors advisors = Advisors.getAdvisors();
-		advisors.addAdvisor(newAdvisor);
+		((Admin) user).addAdvisor(newAdvisor);
 		
 		System.out.println("Advisor added!\n");
 		AdminMenu();
@@ -681,7 +678,7 @@ public class CourseRecommendationDriver {
 		
 		Advisors advisors = Advisors.getAdvisors();
 		if (advisors.haveAdvisor(name)) {
-			advisors.removeAdvisor(advisors.getAdvisor(name));
+			((Admin) user).removeAdvisor(advisors.getAdvisor(name));
 			System.out.println("Advisor removed!\n");
 		} else {
 			System.out.println("There was no advisor by that name.\n");
