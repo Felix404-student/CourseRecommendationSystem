@@ -14,6 +14,10 @@ public class Advisor extends User{
 		this.name = name;
 		advisees = new ArrayList<Student>();
 	}
+	/**
+	 * function that returns the name of the advisor 
+	 * @return String Name 
+	 */
 	
 	public String getName() {
 		return this.name;
@@ -56,7 +60,7 @@ public class Advisor extends User{
 	 * function that adds a student to Advisor's advisees ArrayList
 	 * @param student A Student object
 	 */
-	public void addStudent(Student student) {
+	public void addAdvisee(Student student) {
 		this.advisees.add(student);
 	}
 	

@@ -1,3 +1,4 @@
+
 package courseRecommendationSystem;
 
 /**
@@ -5,7 +6,6 @@ package courseRecommendationSystem;
  * @author natmonz
  */
 public class Admin extends User{
-	
 	/**
 	 * This function will add a student to the Arraylist of students in the system
 	 * @param student A student
