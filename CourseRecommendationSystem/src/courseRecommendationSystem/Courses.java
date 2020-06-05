@@ -64,4 +64,12 @@ public class Courses {
 			System.out.println(courseList.get(i).getCode() + "\t" + courseList.get(i).getName());
 		}
 	}
+	
+	/**
+	 * Iterates through courseList and connects all courses to their prerequisites
+	 * Call after all courses are loaded.
+	 */
+	public void connectPrerequisites() {
+		
+	}
 }
