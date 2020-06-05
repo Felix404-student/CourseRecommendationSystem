@@ -33,9 +33,9 @@ public class Courses {
 	 * @param courseCode String to search courseList for
 	 * @return Whether or not the system can find that course
 	 */
-	public boolean haveCourse(String courseCode) {
+	public boolean haveCourse(String code) {
 		for(int i = 0; i < courseList.size();++i) {
-			if(courseCode.equals(courseList.get(i).getCode())){
+			if(code.equals(courseList.get(i).getCode())){
 				return true;
 			}
 		}
@@ -47,9 +47,9 @@ public class Courses {
 	 * @param courseCode String to search courseList for
 	 * @return The Course object from ArrayList courseList
 	 */
-	public Course getCourse(String courseCode) {
+	public Course getCourse(String code) {
 		for(int i = 0; i < courseList.size();++i) {
-			if(courseCode.equals(courseList.get(i).getCode())){
+			if(code.equals(courseList.get(i).getCode())){
 				return courseList.get(i);
 			}
 		}

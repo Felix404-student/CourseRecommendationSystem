@@ -9,9 +9,8 @@ import java.util.HashMap;
  */
 public class Student extends User{
 	private String studentID; 
-	//private Major major;
-	protected String major; 
-	//protected String[] requiredCourses = new String[]; 
+	private Major major;
+	private Majors majors = Majors.getMajors(); // not sure if this is right, creates instance of singleton object 
 	protected ArrayList<Course> coursesTaken = new ArrayList<Course>();
 	protected ArrayList<Course> coursesNow = new ArrayList<Course>(); 
 	protected HashMap<Course, String> grades = new HashMap<Course, String>();
@@ -35,13 +34,11 @@ public class Student extends User{
 	 * @param major String that is a Student's major
 	 */
 	public void setMajor(String major) {
-		if(major.equalsIgnoreCase("cs") || (major.equalsIgnoreCase("ce")) || (major.equalsIgnoreCase("cis")) ) {
-			//this.major = majorList.get(major); 
-			//this.requiredCourses = Major.get(major); 
+		if(major.equalsIgnoreCase("cs") || (major.equalsIgnoreCase("ce")) || (major.equalsIgnoreCase("cis")) ) { 
+			this.major = majors.retMajor(major); 
 		}
 		else { 
-			this.major = "cs";
-			//this.requiredCourses = Major.get("cs"); 
+			this.major = majors.retMajor("cs");
 		}
 	}
 	
@@ -123,6 +120,14 @@ public class Student extends User{
 	 */
 	public String getName() {
 		return this.name; 
+	}
+	
+	/**
+	 * function that returns a student's major
+	 * @return Major a Major object
+	 */
+	public Major getMajor() {
+		return this.major;  
 	}
 	
 	/**
