@@ -21,7 +21,7 @@
   },
   {
     "name": "Algorithmic Design I",
-    "courseCode": ",CSCE 145",
+    "courseCode": "CSCE 145",
     "courseCredits": "4",
     "prerequisites": "MATH 111, MATH 115",
     "corequisites": "MATH 111, MATH 115",
