@@ -9,7 +9,7 @@ public class CourseRecommendationDriver {
 	private static final String WELCOME_MESSAGE = "Welcome to the Course Recommendation System!\n\nWould you like to log in as a:";
 	private static final String PROMPT = "\nPlease select your choice by number:";
 	private String[] loginMenuOptions = {"Student", "Advisor", "Admin"};
-	private String[] studentLoginOptions = {"I already have a Student Account", "I need to make a Student Account"};
+	private String[] studentLoginOptions = {"I already have a Student Account", "I need to make a new Student Account"};
 	private String[] studentMenuOptions = {"Add Course Taken", "Add a Current Course", "Print Courses Taken", "Print Recommended Schedule", "Logout"};
 	private String[] advisorLoginOptions = {"I already have an Advisor Account", "I need to make a Advisor Account"};
 	private String[] advisorMenuOptions = {"Add a Student to your profile", "Check a Student's GPA", "Add a Student's Grade", "Logout"};
@@ -24,8 +24,12 @@ public class CourseRecommendationDriver {
 		input = new Scanner(System.in);
 		user = new User();
 		Courses courses = Courses.getCourses();
+		courses.connectPrerequisites();
+		courses.connectCorequisites();
+		Majors majors = Majors.getMajors();
 		Students students = Students.getStudents();
 		Advisors advisors = Advisors.getAdvisors();
+		advisors.connectAdvisees();
 	}
 	
 	/**

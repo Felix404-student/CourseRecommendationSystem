@@ -66,10 +66,46 @@ public class Courses {
 	}
 	
 	/**
-	 * Iterates through courseList and connects all courses to their prerequisites
+	 * Iterates through courseList and connects all courses to their prerequisites (if it can find them in courseList)
 	 * Call after all courses are loaded.
 	 */
 	public void connectPrerequisites() {
-		
+		for(int i = 0; i < courseList.size();++i) {
+			String[] prereqArray = courseList.get(i).prerequisites_s.split(",");
+			for (int j = 0; j < prereqArray.length; ++j) {
+				if (courses.haveCourse(prereqArray[j])) {
+					courseList.get(i).setPrerequisite(courses.getCourse(prereqArray[j]));
+				}
+			}
+			// Tests to see if it worked
+			/*
+			System.out.print(courseList.get(i).getCode() + "\t");
+			for (int k = 0; k < courseList.get(i).prerequisites.size(); ++k) {
+				System.out.print(courseList.get(i).prerequisites.get(k).getCode() + " ");
+			}
+			System.out.println();*/
+		}
 	}
+	
+	/**
+	 * Iterates through courseList and connects all courses to their COrequisites (if it can find them in courseList)
+	 * Call after all courses are loaded.
+	 */
+	public void connectCorequisites() {
+		for(int i = 0; i < courseList.size();++i) {
+			String[] coreqArray = courseList.get(i).corequisites_s.split(",");
+			for (int j = 0; j < coreqArray.length; ++j) {
+				if (courses.haveCourse(coreqArray[j])) {
+					courseList.get(i).setCorequisite(courses.getCourse(coreqArray[j]));
+				}
+			}
+			/* Tests to see if it worked
+			System.out.print(courseList.get(i).getCode() + "\t");
+			for (int k = 0; k < courseList.get(i).corequisites.size(); ++k) {
+				System.out.print(courseList.get(i).corequisites.get(k).getCode() + " ");
+			}
+			System.out.println();*/
+		}
+	}
+	
 }

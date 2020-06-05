@@ -10,7 +10,7 @@ import org.json.simple.parser.JSONParser;
 
 /**
  * A class for loading the JSON files for Course, Student, Advisor, and Major
- * @author Dongyu, Justin
+ * @author Dongyu, Justin, natmonz
  *
  */
 public class CourseLoader{

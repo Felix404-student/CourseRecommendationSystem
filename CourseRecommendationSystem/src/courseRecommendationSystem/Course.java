@@ -16,8 +16,8 @@ public class Course {
 	private boolean courseSpring = false; 
 	private boolean courseSummer = false; 
 	private boolean courseFall = false; 
-	private String prerequisites_s = "null";
-	private String corequisites_s = "null";
+	protected String prerequisites_s = "null";
+	protected String corequisites_s = "null";
 	
 	/**
 	 * function that creates a course based on parameters of specific name, course code, and credit 

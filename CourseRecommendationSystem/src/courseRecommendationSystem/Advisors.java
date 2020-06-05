@@ -73,4 +73,20 @@ public class Advisors {
 	public void removeAdvisor(Advisor advisor) {
 		advisorList.remove(advisor);
 	}
+	
+	/**
+	 * Adds all Students in each Advisor's list of advisees to their arrayList advisees
+	 * Call after all Students and Advisors have been loaded.
+	 */
+	public void connectAdvisees() {
+		Students students = Students.getStudents();
+		for (int i = 0; i < advisorList.size(); ++i) {
+			String[] adviseesArray = advisorList.get(i).advisees_s.split(",");
+			for (int j = 0; j < adviseesArray.length; ++j) {
+				if (students.haveStudent(adviseesArray[j])) {
+					advisorList.get(i).addStudent(students.getStudent(adviseesArray[j]));
+				}
+			}
+		}
+	}
 }
