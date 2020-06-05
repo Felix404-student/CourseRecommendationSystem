@@ -1,0 +1,12 @@
+[
+	{
+	"student name":"student1",
+	"student ID":"12345",
+	"student major":"CS"
+	}
+	{
+	"student name":"student2",
+	"student ID":"1234",
+	"student major":"CIS"
+	}
+]

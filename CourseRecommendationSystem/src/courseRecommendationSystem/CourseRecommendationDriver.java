@@ -421,7 +421,7 @@ public class CourseRecommendationDriver {
 
 		Students students = Students.getStudents();
 		if (students.haveStudent(student)) {
-			((Advisor) user).addStudent(students.getStudent(student));
+			((Advisor) user).addAdvisee(students.getStudent(student));
 			System.out.println("Student Added!\n");
 		} else {
 			System.out.println("Sorry, we could not find a student by that name.\n");
@@ -653,7 +653,7 @@ public class CourseRecommendationDriver {
 			
 			Students students = Students.getStudents();
 			if (students.haveStudent(response)) {
-				newAdvisor.addStudent(students.getStudent(response));
+				newAdvisor.addAdvisee(students.getStudent(response));
 				System.out.println("Advisee added!\n");
 			} else {
 				System.out.println("We could not find a student by that name\n");
