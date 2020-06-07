@@ -1,7 +1,7 @@
 # CourseRecommendationSystem      
 CSCE 247 class project      
       
-Natalie, Dongyu, Justin, and Jonathan     
+Natalie, Dongyu, and Justin
            
 Added Courses and Advisors functions to connect to prereqs, advisees. Updated Driver to reflect changes — Justin
 
